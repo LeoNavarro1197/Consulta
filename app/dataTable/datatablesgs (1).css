@@ -1,0 +1,110 @@
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+    background-color: #dad6d6;
+}
+  
+  table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+    background-color: #dad6d6;
+}
+  
+table.dataTable.compact tbody th, table.dataTable.compact tbody td {
+    padding: 12px;
+}
+  
+  table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
+    border-right: 1px solid #5f4e4e;
+}
+  
+table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td:last-child {
+    border-right: none;
+}
+  
+  .table td, .table th {
+    border-top: none;
+}
+  
+  table.dataTable.compact thead th, table.dataTable.compact thead td {
+    padding: 10px 17px;
+}
+  
+ table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td:first-child {
+    border-left: none;
+}
+  .row{
+        padding: 10px 10px 10px 10px;
+        background: white;
+        border-radius: 12px;
+  }
+  table.dataTable thead th, table.dataTable thead td {
+    border-bottom: none;
+    border-right: 1px solid #5f4e4e;
+}
+table.dataTable thead th:last-child {
+    border-bottom: none;
+    border-right: none;
+}
+  
+ table.dataTable.no-footer {
+    border-bottom: none;
+}
+  
+  .dataTables_wrapper .dataTables_filter input {
+    border-radius: 10px;
+}
+div.dataTables_wrapper div.dataTables_paginate {
+    background: #d9d4d4;
+    padding: 0px 10px;
+    border-radius: 20px;
+}
+  .paginate_button .page-link {
+    color: black;
+    background-color: transparent;
+    border-color: transparent;
+    padding: 2px;
+}
+ .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    color: red !important;
+    border: none;
+    background: none;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 2px;
+}
+ .page-item.active .page-link {
+    border-radius: 70px;
+    padding: 2px;
+    color: #007bff;
+    font-weight: 700;
+    background-color: transparent;
+    border-color: transparent;
+}
+.page-item.disabled .page-link {
+    background-color: transparent;
+    border-color: transparent;
+}
+.dt-buttons{
+left:70%;
+}
+.btn-group-vertical>.btn, .btn-group>.btn {
+    padding: 4px 0.75rem!important;
+}  
+.col.div-datatable {
+    padding: 0;
+}
+.container-fluid {
+    padding: 0;
+}
+  td:first-child {
+    border-left-style: solid;
+    border-top-left-radius: 10px; 
+    border-bottom-left-radius: 10px;
+}
+td:last-child {
+    border-right-style: solid;
+    border-bottom-right-radius: 10px; 
+    border-top-right-radius: 10px; 
+}
+  
+div.dataTables_wrapper div.dataTables_info {
+    display: none;
+}

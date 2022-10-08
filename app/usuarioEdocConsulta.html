@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="datetimepicker/jquery-3.3.1.min.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <!--datatable-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/dataTables.css">
+    <script src="dataTable/datatablegs (1).js"></script>
+
+    <!-- tree js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    
+    <link href="datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/usuarioEdocConsulta.css">
+    <link rel="stylesheet" href="css/monitorGeneralMail.css">
+    <link rel="stylesheet" href="css/verHistorialDeEventos.css">
+    <link rel="stylesheet" href="css/modalEstilos.css">
+    <link rel="stylesheet" href="../assets/css/icons_portalConsulta-v1.0/icons.css">
+    
+
+    
+    <script src="libreria-ajax/jquery.min.js" type="text/javascript"></script>
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <title>UsuarioEdocConsulta</title>
+
+    <!-- tree js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+
+    <!--prueba-->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/css/uikit.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/css/uikit.almost-flat.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/css/uikit.gradient.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" rel="stylesheet" /> -->
+
+</head>
+
+<body>
+
+    <!-- <div>
+        <p style="color: #24356b; font-weight: bold; font-size: 30px; padding-left: 35px; padding-top: 10px; margin: 0;"><em>Usuario eDoc Consulta</em></p>
+    </div> -->
+
+    <!--------------------------------------------------------prueba------------------------------------------------------------>
+    <!-- <style>
+        #node {
+            max-height: 100px;
+            overflow: auto;
+        }
+    </style>
+
+    <div class="uk-container uk-grid">
+        <div class="uk-width-1-1">
+          <p>Something <strong>amazing</strong> with the web!
+            <a class="uk-button uk-button-primary" id="showSweet">
+              <i class="fa fa-spin fa-cog"></i> Sweet
+            </a>
+          </p>
+        </div>
+        <div class="uk-width-1-1">
+          <a class="uk-button" id="ajaxData">
+            <i class="fa fa-cog" id="showLoading"></i> Get data
+          </a>
+          <pre id="node" class="uk-panel uk-panel-box uk-panel-box-primary"></pre>
+          <div id="jstree" class="uk-panel uk-panel-box"></div>
+        </div>
+      </div> -->
+
+    <!--------------------------------------------------------ventanas Modales------------------------------------------------------------>
+
+    <!--edit true-false-->
+
+    <div class="modal fade" id="editarRolModal" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div id="para" role="document" class="modal-dialog modal-sm espacioCabezal">
+            <div id="agrandarModal" class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="editTrueFalse">
+                        ------------</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div class="estiloBoton2">
+                            <button data-dismiss="modal" aria-label="Close" class="btn btn-primary estiloEspacioBoton2">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------- Modal historialdeconexion ----------------------------->
+
+    
+    <div class="modal fade" id="historialdeconexion" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true" style="background: transparent;">
+    
+        <div role="document" class="modal-dialog modal-lg buscaradentrodialog" >
+            <div class="modal-content buscaradentrocontent" style="height: 365px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo" id="exampleModalLabel">Historial de conexión</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="historialdeconexionTabla">
+                    <div class="table-responsive modalOrden">
+                        <!-- <table id="tablaHistorialConexion" class="table table-striped table-borderless table-sm">
+                            
+                                <thead> 
+                                
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                        </table> -->
+                        <div class="div-datatable" style="padding: 20px;">
+                            <div class="table-wrapper">
+                              <table id="tablaHistorialConexion" class="table table-hover table-sm display compact cell-border" id="tblCreNoti" style="width: 100%;">
+                              </table>
+                            </div>
+                          </div>
+                    </div>
+                </div>  
+                
+                <div class="botonDesCerAling" style="padding-top: 20px;">
+                    <button class="btn btn-primary botonDesCer">Decargar</button>
+                    <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!--------------------------- Modal historialdeactividad ----------------------------->
+
+    <div class="modal fade" id="historialdeactividad" tabindex="-1" aria-labelledby="exampleModalLabel"   
+    aria-hidden="true" style="background: transparent;">
+    
+        <div role="document" class="modal-dialog modal-lg buscaradentrodialog" >
+            <div class="modal-content buscaradentrocontent" style="height: 365px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo" id="exampleModalLabel">Historial de actividad</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="historialdeactividadTabla">
+                    <div class="table-responsive modalOrden">
+                      <div class="div-datatable" style="padding: 20px;">
+                        <div class="table-wrapper">
+                          <table id="tablaHistorialActividad" class="table table-hover table-sm display compact cell-border" id="tblCreNoti" style="width: 100%;">
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="botonDesCerAling" style="padding-top: 20px;">
+                    <button class="btn btn-primary botonDesCer">Decargar</button>
+                    <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------- Administrar roles -------------------->
+
+    <div class="modal fade" id="Administrarroles" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" style="background: transparent;">
+    
+        <div role="document" class="modal-dialog modal-lg buscaradentrodialog" >
+            <div class="modal-content buscaradentrocontent" style="height: 445px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo" id="exampleModalLabel">Administrar roles</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    
+                </div>
+                  
+                <div class="administrarRoles">
+                    <button class="focusNone administrarbtn" data-toggle="modal" data-target="#crearsolamenterol" data-dismiss="modal" aria-label="Close">
+                        <span class="icon-add administrarspan"></span><a style="color: #24356b;">Crear Rol</a></button>
+                </div>
+
+                <div class="administrartabla">
+                    <div class="table-responsive modalOrden" >
+                        <!-- <table id="tablaAdministrarRoles" class="table table-striped table-borderless table-sm">
+                            
+                                <thead> 
+                                    
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                        </table> -->
+                        <div class="div-datatable" style="padding: 20px;">
+                            <div class="table-wrapper">
+                              <table id="tablaAdministrarRoles" class="table tamaño-tabla table-hover table-sm display compact cell-border" style="width: 100%;">
+                                
+                              </table>
+                            </div>
+                          </div>
+                    </div>
+                    
+                </div>
+                    
+                <!-- <nav aria-label="Page navigation example" class="administrarnav">
+                    <ul class="pagination" >
+                        <p class="administrarp">Paginación</p>
+                      <li class="page-item" >
+                        <a class="page-link" href="#" aria-label="Previous" style="border: none; font-size: 13px;">  
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link administrarli" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link administrarli" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link administrarli" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next" style="border: none; border-radius: 0px 15px 15px 0; font-size: 13px;">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                </nav> -->
+                
+                <div class="botonDesCerAling" style="padding-top: 20px;">
+                    <button class="btn btn-primary botonDesCer">Decargar</button>
+                    <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------- Crear Usuario -------------------->
+
+    <div class="modal fade" id="crearusuario" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true" style="background: transparent;">
+    
+        <div role="document" class="modal-dialog buscaradentrodialog" style="padding-top: 70px;">
+            <div class="modal-content buscaradentrocontent" style="height: 550px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo crearusuarioh5" id="exampleModalLabel">Crear usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="crearusuariodiv1">
+                    <p class="crearusuariodiv1p">1</p>
+                    
+                        <span class="lineaHorizontalCrear" style="margin-top: 9%;"></span>
+                    
+                    <p class="crearusuariodiv1p1">2</p>
+                    
+                        <span class="lineaHorizontalCrear" style="margin-top: 9%;"></span>
+                    
+                    <p class="crearusuariodiv1p1">3</p>
+                    
+                </div>
+                <div style="display: flex;">
+                    <p class="crearusuariodiv2p">Crear usuario</p>
+                    <p class="crearusuariodiv2p2">Asignar Rol<br>y permiso</p>
+                    <p class="crearusuariodiv2p3">Finalizar</p>
+                </div>
+                <h6 class="crearusuarioh6">Datos del usuario</h6>
+                <form>
+                    <label for="nombreApellido" class="crearusuarioh6p">Nombre y apellido <a style="color: red;">*</a></label>
+                    <div class="crearusuarioh6div">
+                        <input id="nombreApellido" name="Nombre" type="text" size="30" class="crearusuarioh6input" value="" onkeyup="this.value=NumText(this.value)">
+                    </div>
+                    <label for="usuario" class="crearusuarioh6p">Usuario <a style="color: red;">*</a></label>
+                    <div class="crearusuarioh6div">
+                        <input id="usuario" type="text" name="Usuario" size="30" class="crearusuarioh6input" value="" onkeyup="this.value=NumText(this.value)">
+                    </div>
+                    <label for="correo" class="crearusuarioh6p">Correo electrónico <a style="color: red;">*</a></label>
+                    <div class="crearusuarioh6div">
+                        <input id="correo" type="email" name="Email" pattern=".+@gmail\.com, .+@hotmail\.com, .+@outlook\.com" size="30" required class="crearusuarioh6input">
+                    </div>
+                    <label for="telefono" class="crearusuarioh6p">Teléfono contacto <a style="color: red;">*</a></label>
+                    <div class="crearusuarioh6div">
+                        <input id="telefono" type="number" name="Telefono" size="15" class="crearusuarioh6input">
+                    </div>
+                </form>
+                <div class="botonDesCerAling crearusuarioh6div2">
+                    <!-- <button onclick="crearUsuario()" class="btn btn-primary botonDesCer" data-toggle="modal" data-target="#crearusuario2" data-dismiss="modal" aria-label="Close">Siguiente</button> -->
+                    <button id="btnSiguienteColor" class="btn btn-primary botonDesCer">Siguiente</button>
+                    <!-- <button id="btnSiguienteGris" class="btn btn-secondary botonDesCerGris" data-toggle="modal" data-target="#-------">Siguiente</button> -->
+                    <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------- Crear Usuario 2 -------------------->
+
+    <div class="modal fade" id="crearusuario2" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true" style="background: transparent;">
+    
+        <div id="ventanaCrearUsuario2PosicionVertial" role="document" class="modal-dialog buscaradentrodialog">
+            <div id="ventanaCrearUsuario2Tamano" class="modal-content buscaradentrocontent" style="height: 375px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo" style="padding-left: 10px;" id="exampleModalLabel">Crear usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="crearusuario2div">
+                    <p class="crearusuario2divp">1</p>
+                    
+                        <span class="lineaHorizontalCrearVerde" style="margin-top: 9%;"></span>
+                    
+                    <p class="crearusuario2divp">2</p>
+                    
+                        <span class="lineaHorizontalCrear" style="margin-top: 9%;"></span>
+                    
+                    <p class="crearusuario2divp2">3</p>
+                    
+                </div>
+                <div style="display: flex;">
+                    <p class="crearusuario2div2p">Crear usuario</p>
+                    <p class="crearusuario2div2p2">Asignar Rol<br>y permiso</p>
+                    <p class="crearusuario2div2p3">Finalizar</p>
+                </div>
+                <h6 class="crearusuario2h6">Asignar Rol y Permisos</h6>
+                <form>
+                    <p class="crearusuario2formp">Asignar Rol <a style="color: red;">*</a></p>
+                    <div class="crearusuario2formdiv">
+                        <div class="buscar crearusuario2formdiv1">
+                            <select name="Operacion" id="opciones" 
+                                style="width: 90%; height: 35px; font-size: 13px; border-radius: 10px; color: #9e9e9e; border: none;">
+                                
+                            </select>
+                        </div>
+                      
+                        <div class="crearusuario2formdiv2">
+                            <!-- <button  class="focusNone crearusuario2fuerabtn"></button> -->
+                                <span id="botonCrearRol" type="button" class="icon-selectorDown crearusuario2fueraspan"
+                                 style="font-size: 15px; padding-top: 5px;"></span><a id="textoCrearRol" style="font-size:15px; padding-bottom: 15px; color: #24356b;">Crear Rol</a>
+                                 <span id="botonCrearRolGris" type="button" class="icon-selectorDown-abj crearusuario2fueraspan"
+                                 style="font-size: 15px; padding-top: 5px; display: none;"></span><a id="textoCrearRolGris" style="font-size:15px; padding-bottom: 15px; color: #24356b; display: none;">Crear Rol</a>
+                        </div>
+                    </div>
+                </form> 
+                <div id="permisosAsignadosAEsteRol" style="padding-top: 10px; display: none;">
+                  <div >
+                    <p class="crearusuario2formp">Permisos asignados a este rol</p>
+                    <div class="espacio overflow-auto">
+                      <div id="jstreeCargarPermisos">
+                            
+                      </div>
+                    </div>
+                  </div> 
+                </div>
+                <div class="ventanaCrearUsuario2Inputs crearusuario2fueradiv" id="ventanaCrearUsuario2Inputs">
+                    <div class="crearusuario2fueradiv2">
+                        <p style="margin: 0; padding: 0;">Nombre Rol <a style="color: red;">*</a></p>
+                        <input id="nombreRol" type="text" placeholder="Buscar" class="crearusuario2fuerainput1">
+                    </div>
+                    <div class="crearusuario2fueradiv3">
+                        <p style="margin: 0; padding: 0;">Descripción Rol <a style="color: red;">*</a></p>
+                        <input id="descripcionRol" type="text" placeholder="Buscar" class="crearusuario2fuerainput2">
+                    </div>
+                </div>
+                <div id="tablaVertical" class="tablaVertical ">
+                    <div class="espacio overflow-auto">
+                        <div id="jstreePrincipal">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="botonDesCerAling crearusuario2fueradiv4">
+                    <button id="botonCrearRol2" style="display: none;" class="btn btn-primary botonDesCer">Crear rol</button>
+                    <button id="botonSiguienteNumero2" class="btn btn-primary botonDesCer">Siguiente</button>
+                    <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------- Crear Solamente Rol -------------------->
+
+    <div class="modal fade" id="crearsolamenterol" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true" style="background: transparent;">
+    
+        <div id="ventanaCrearUsuario2PosicionVertialSolamente" role="document" class="modal-dialog buscaradentrodialog">
+            <div id="ventanaCrearUsuario2TamanoSolamente" class="modal-content buscaradentrocontent" style="height: 440px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo" style="padding-left: 10px;" id="exampleModalLabel">Crear Rol</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <h6 class="crearusuario2h6">Crear Rol y Permisos</h6>
+                <!-- <form>
+                    <p class="crearusuario2formp">Asignar Rol</p>
+                    <div class="crearusuario2formdiv">
+                        <div class="buscar crearusuario2formdiv1">
+                            <select name="Operacion" id="opciones2" 
+                                style="width: 90%; height: 35px; border-radius: 10px; color: #9e9e9e; border: none;">
+                                
+                            </select>
+                        </div>
+                        <div class="crearusuario2formdiv2">
+                            
+                                <span id="botonCrearSolamenteRol" type="button" class="icon-add crearusuario2fueraspan"
+                                 style="font-size: 15px; padding-top: 5px;"></span><a style="font-size:15px; padding-bottom: 15px">Crear Rol</a>
+                        </div>
+                    </div>
+                </form> -->
+                <div class="ventanaCrearUsuario2Inputs crearusuario2fueradiv" id="ventanaCrearUsuario2InputsSolamente">
+                    <div class="crearusuario2fueradiv2">
+                        <p style="margin: 0; padding: 0;">Nombre Rol <a style="color: red;">*</a></p>
+                        <input id="nombreRolSolamente" type="text" placeholder="Buscar" class="crearusuario2fuerainput1">
+                    </div>
+                    <div class="crearusuario2fueradiv3">
+                        <p style="margin: 0; padding: 0;">Descripción Rol <a style="color: red;">*</a></p>
+                        <input id="descripcionRolSolamente" type="text" placeholder="Buscar" class="crearusuario2fuerainput2">
+                    </div>
+                </div>
+                <div id="tablaVerticalSolamente" class="tablaVertical ">
+                    <div class="espacio overflow-auto">
+                        <div id="jstreeSolamente">
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="botonDesCerAling crearusuario2fueradiv4">
+                    <button id="botonCrearSolamenteRol2" style="display: none;" class="btn btn-primary botonDesCer">Crear rol</button>
+                    <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!----------------- Crear Usuario 3 -------------------->
+
+    <div class="modal fade" id="crearusuario3" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true" style="background: transparent;">
+    
+        <div id="ventanaCrearUsuario2PosicionVertial" role="document" class="modal-dialog buscaradentrodialog">
+            <div id="ventanaCrearUsuario2Tamano" class="modal-content buscaradentrocontent" style="height: 430px;">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title buscaradentrotitulo" style="padding-left: 10px;" id="exampleModalLabel">Crear usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                
+                <div class="crearusuario3div">
+                    <p class="crearusuario3p">1</p>
+                    
+                        <span class="lineaHorizontalCrearVerde" style="margin-top: 9%;"></span>
+                    
+                    <p class="crearusuario3p">2</p>
+                    
+                        <span class="lineaHorizontalCrearVerde" style="margin-top: 9%;"></span>
+                    
+                    <p class="crearusuario3p">3</p>
+                    
+                </div>
+                <div style="display: flex;">
+                    <p class="crearusuario3div1p1">Crear usuario</p>
+                    <p class="crearusuario3div1p2">Asignar Rol<br>y permiso</p>
+                    <p class="crearusuario3div1p3">Finalizar</p>
+                </div>
+                <h6 class="crearusuario3h6">Revisar Datos de Usuario a Crear</h6>
+                <div class="crearusuario3div2">
+                    <div>
+                        <h6 class="crearusuario3h62">Nombre y apellido:</h6>
+                        <h6 class="crearusuario3h62">Usuario:</h6>
+                        <h6 class="crearusuario3h62">Correo electrónico:</h6>
+                        <h6 class="crearusuario3h62">Teléfono contacto:</h6>
+                        <h6 class="crearusuario3h62">Rol:</h6>
+                    </div>
+                    <div>
+                        <p id="name" class="crearusuario3p2">-------------</p>
+                        <p id="user" class="crearusuario3p2">-------------</p>
+                        <p id="email" class="crearusuario3p2">-------------</p>
+                        <p id="cel" class="crearusuario3p2">-------------</p>
+                        <p id="rol" class="crearusuario3p2">-------------</p>
+                    </div>
+                </div>
+                
+                <div class="botonDesCerAling crearusuario3div3">
+                    <button class="btn btn-primary botonDesCer" data-toggle="modal" data-target="#crearusuario2" data-dismiss="modal" aria-label="Close">Atras</button>
+                    <button id="btnFinalizar" class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---------------contenido--------------------->
+    
+    <div class="contenido">
+        <div class="box1">
+            <div class="box1-1">
+                <span class="icon-adminUsuarios contenedorslot1"></span>
+            </div>
+            <div class="box1-2">
+                <table class="tabla2 table table-borderless contenedorslot2tabla">
+                    <tbody class="contenedorslot2tablab">
+                      <tr class="contenidoslot2tablatr">
+                        <td>Usuarios</td>
+                        <td id="usuarios" class="contenidoslot2tablatd">0</td>                            
+                      </tr>
+                      <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                        <td>Activos</td>
+                        <td id="activos" class="contenidoslot2tablatd">0</td>
+                      </tr>
+                      <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                        <td>Inactivos</td>
+                        <td id="inactivos" class="contenidoslot2tablatd" >0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            
+            </div>
+            <div class="box1-3">
+                <table class="tabla2 table table-lg table-borderless contenedorslot3">
+                    <tbody class="contenedorslot3b">
+                      <tr>
+                        <td><span class="icon-roles contenedorslot3td2"></span>
+                            Roles creados</td>
+                        <td id="rolesCreados" class="contenedorslot3td" style="padding-bottom: 5px;">0</td>
+                      </tr>
+                      <tr class="lineaHorizontal2 contenedorslot3tr">
+                        <td><span class="icon-usuariosConectados contenedorslot3td2"></span>
+                            Usuarios conectados recientemente</td>
+                        <td id="usuariosConectados" class="contenedorslot3td">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        
+        <div class="box2">
+            <button class="btn btn-primary contenidobox2" data-toggle="modal" data-target="#crearusuario">
+                <span class="icon-add" style="padding-right: 10px;"></span> Crear usuario</button>
+        </div>
+
+        <div class="box3">
+            <button id="btnAdministrarRoles" class="btn btn-primary contenidobox3" data-toggle="modal" data-target="#Administrarroles">
+                <span class="icon-administracion" style="padding-right: 10px;"></span>Administrar roles</button>
+        </div>
+        <div class="box5" >
+            <!-- <div class="btn-group" >
+                <button class="btn btn-secondary btn-sm dropdown-toggle contenidobox5" 
+                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Mostrar 5
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item buscartablaestiloitem" href="#">Cinco</a>
+                    <a class="dropdown-item buscartablaestiloitem" href="#">Diez</a>
+                    <a class="dropdown-item buscartablaestiloitem" href="#">Quince</a>
+                    <a class="dropdown-item buscartablaestiloitem" href="#">Veinte</a>
+                    <a class="dropdown-item buscartablaestiloitem" href="#">Todos</a>
+                    
+                </div>
+              </div> -->
+        </div>
+        <div class="box6" style="border-radius: 20px;">
+            <!--------------------------------Tabla----------------------------------------->
+
+            <!-- <div class="tabla" style="padding-left: 10px; padding-right: 10px;">
+                <div class="table-responsive" >
+                    <table id="tablaUsuariosConsulta" class="table3 table table-striped table-bordered">
+                        <div class="tabla3">
+                            <thead>
+                            </thead>  
+
+                            <tbody>
+                            </tbody>
+                        </div>
+                    </table>
+                </div>
+            </div> -->
+
+            <div id="tablaPrimaria" class="tabla div-datatable" style="padding: 20px;">
+                <div class="table-responsive table-wrapper overflow-auto">
+                    <table id="tablaUsuariosConsulta" class="table is-striped table-hover table-sm display compact cell-border">
+                        
+                            
+                    </table>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+
+    <!------------- Modal Editar Usuario ---------------->
+    <div
+      class="modal fade"
+      id="editUser"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombreEdiCli">Nombre/Razón Social</label>
+                    <input
+                      type="text"
+                      class="input-edit form-control"
+                      name="nombreEdiCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="idEdiCli">Identificación</label>
+                    <input
+                      type="text"
+                      class="input-edit form-control"
+                      name="idEdiCli"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="emailEdiCli">Email</label>
+                    <input
+                      type="email"
+                      class="input-edit form-control"
+                      name="emailEdiCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="telEdiCli">Teléfono</label>
+                    <input
+                      type="number"
+                      class="input-edit form-control"
+                      name="telEdiCli"
+                    />
+                  </div>
+                </div>
+                <div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="telEdiCli">Asignar Rol</label>
+                            <select class="input-edit" style = "border: 1px solid; padding: 6px;" name="Operacion" id="opciones3" 
+                                style="width: 90%; height: 35px; border-radius: 10px; color: #9e9e9e; border: none;">
+                                
+                            </select>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" class="btn btn-primary" id="btnEditUser" data-dismiss="modal">
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--------------- Modal Editar Rol ---------------------->
+    <div
+      class="modal fade"
+      id="editRol"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Rol</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombreEdiCli">Nombre del Rol</label>
+                    <input
+                      type="text"
+                      class="input-edit-rol form-control"
+                      name="nombreEdiCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="idEdiCli">Descripción del Rol</label>
+                    <input
+                      type="text"
+                      class="input-edit-rol form-control"
+                      name="idEdiCli"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="idEdiCli">Asignar Permisos</label>
+                      
+                        <div class="overflow-auto">
+                            <div class="espacio" id="jstreePermisos">
+                                
+                            </div>
+                        </div>
+                    
+                    </div>
+                  </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" class="btn btn-primary" id="btnEditRol" data-dismiss="modal">
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper js, then Bootstrap js -->
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!--ventanas emergentes-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- moment js -->
+<script src="moment/moment.js"></script>
+<script src="moment/moment-locale-es.js"></script>
+
+<!-- tree js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+<!-- datatable -->
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="dataTable/datatablegs (1).js"></script>
+
+<!--datetimepicker-->
+<script src="datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="datetimepicker/scripts.js"></script>
+
+<script src="table/bootstrap-table.js"></script>
+<script src="table/bootstrap-table-es-ES.js"></script>
+
+<script src="table/paginacionTabla.js"></script>
+
+<script src="js/usuarioEdocConsulta/MantenimientoUsuarioConsulta.js" type="module"></script>
+<script src="js/usuarioEdocConsulta/obtenerTotalRolesUsuarioConsulta.js" type="module"></script>
+<script src="js/usuarioEdocConsulta/tablaAdministrarRoles.js" type="module"></script>
+<script src="js/usuarioEdocConsulta/tablaObtenerUsuariosConsulta.js" type="module"></script>
+<script src="../assets/js/main.js" type="module"></script>
+
+</body>
+</html>

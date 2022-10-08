@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="css/edoc-cliente-style.css" />
+    <!-- <link
+      rel="stylesheet"
+      href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"
+    /> -->
+    <link rel="stylesheet" href="../assets/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="../assets/datatables/datatablesgs.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="../assets/css/icons_portalConsulta-v1.0/icons.css"
+    />
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <title>Monitor Edoc Cliente</title>
+  </head>
+  <body>
+    <!-- Modals -->
+    <!-- -- Crear Notificaciones -->
+    <!-- --- 1st Step -->
+    <div
+      class="modal fade cre-noti-m"
+      id="creNotiModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+              style="color: midnightblue"
+            >
+              Crear Notificación
+            </h5>
+            <a href="#" type="button" data-dismiss="modal"
+              ><i class="icon-close"></i
+            ></a>
+          </div>
+          <div class="modal-body">
+            <div class="steps-box">
+              <div class="step-one-box active">
+                <span>1</span><br />
+                <span>Crear notificación</span>
+              </div>
+              <div class="step-two-box">
+                <span>2</span><br />
+                <span>Seleccionar clientes</span>
+              </div>
+              <div class="step-three-box">
+                <span>3</span><br />
+                <span>Enviar</span>
+              </div>
+            </div>
+            <form id="creNotiForm" name="geek">
+              <div class="row" style="background-color: unset">
+                <div class="col-md-12">
+                  <input
+                    type="text"
+                    class="form-control cre-input first-step-input"
+                    placeholder="Escriba un nombre para su notificación"
+                    id="titleCreNoti"
+                  />
+                </div>
+              </div>
+              <div class="row" style="background-color: unset">
+                <div class="col-md-6">
+                  <input
+                    type="date"
+                    class="
+                      form-control form-control-sm
+                      cre-input
+                      input-date
+                      first-step-input
+                    "
+                    id="fechaDesdeCreNoti"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <input
+                    type="date"
+                    class="
+                      form-control form-control-sm
+                      cre-input
+                      input-date
+                      first-step-input
+                    "
+                    id="fechaHastaCreNoti"
+                  />
+                </div>
+              </div>
+              <div class="row" style="background-color: unset">
+                <div class="col-md-12">
+                  <textarea
+                    name=""
+                    cols="30"
+                    rows="3"
+                    class="form-control"
+                    id="msgCreNoti"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row" style="background-color: unset">
+                <div class="col-md-12">
+                  <select
+                    class="custom-select first-step-input"
+                    aria-label="Default select example"
+                    id="slcMetodoEnvio"
+                    
+                  ></select>
+                </div>
+              </div>
+              <div class="row" style="background-color: unset">
+                <div class="col-md-12">
+                  <select
+                    class="custom-select"
+                    aria-label="Default select example"
+                    id="slcPlantilla"
+                  >
+                    <option selected>
+                      Elija una platilla para su notificación
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="copy-box">
+                <p>
+                  Este servicio tendrá un costo de
+                  <strong>USD $0,20 ctvos </strong> por cada mensaje. Al aceptar
+                  una de estas opciones, usted aprueba los
+                  <strong>términos, condiciones, y recargos</strong> de este
+                  servicio, el cual se reflejará en su siguiente periodo de
+                  facturación.
+                </p>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #2797d2"
+              data-target="#creNotiModal2"
+              data-toggle="modal"
+              data-dismiss="modal"
+              id="btnFirstStep"
+              onclick="geek.reset()"
+              disabled
+            >
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- --- 2nd Step -->
+    <div
+      class="modal fade cre-noti-m"
+      id="creNotiModal2"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+              style="color: midnightblue"
+            >
+              Crear Notificación
+            </h5>
+            <a href="#" type="button" data-dismiss="modal"
+              ><i class="icon-close"></i
+            ></a>
+          </div>
+          <div class="modal-body">
+            <div class="steps-box">
+              <div class="step-one-box">
+                <span>1</span><br />
+                <span>Crear notificación</span>
+              </div>
+              <div class="step-two-box active">
+                <span>2</span><br />
+                <span>Seleccionar clientes</span>
+              </div>
+              <div class="step-three-box">
+                <span>3</span><br />
+                <span>Enviar</span>
+              </div>
+            </div>
+            <div class="table-box">
+              <div class="tabla">
+                <div class="table-responsive">
+                  <table
+                    id="tblCreNoti"
+                    class="
+                      table3
+                      table table-hover table-sm
+                      display
+                      compact
+                      cell-border
+                    "
+                    style="background: #fff; border-radius: 10px; width: 100%"
+                  ></table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-toggle="modal"
+              data-dismiss="modal"
+              data-target="#creNotiModal"
+            >
+              Volver
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #2797d2"
+              data-target="#creNotiModal3"
+              data-toggle="modal"
+              data-dismiss="modal"
+              id="btnCreNotiModal2"
+            >
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- --- 3rd Step -->
+    <div
+      class="modal fade cre-noti-m"
+      id="creNotiModal3"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+              style="color: midnightblue"
+            >
+              Crear Notificación
+            </h5>
+            <a href="#" type="button" data-dismiss="modal"
+              ><i class="icon-close"></i
+            ></a>
+          </div>
+          <div class="modal-body">
+            <div class="steps-box">
+              <div class="step-one-boxm active">
+                <span>1</span><br />
+                <span>Crear notificación</span>
+              </div>
+              <div class="step-two-box active">
+                <span>2</span><br />
+                <span>Seleccionar clientes</span>
+              </div>
+              <div class="step-three-box active">
+                <span>3</span><br />
+                <span>Enviar</span>
+              </div>
+            </div>
+            <div class="parent-box">
+              <div class="box b1">
+                <p style="font-weight: bold; color: midnightblue">
+                  Tu mensaje:
+                </p>
+                <div class="inner-box" id="innerBoxMsg"></div>
+              </div>
+              <div class="box b2">
+                <p style="font-weight: bold; color: midnightblue">
+                  Se enviará a:
+                </p>
+                <div class="inner-box" id="innerBoxUsers"></div>
+              </div>
+            </div>
+            <div class="copy">
+              <p>
+                Se encontraron 10 números validos, esto trendrá un costo de COP
+                50.000
+              </p>
+              <p>
+                Al finalizar {razon social cliente} acepta los
+                <strong>terminos, condiciones y recargos</strong> de este
+                servicio y se reflejara en su siguiente periodo de facturacion
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-toggle="modal"
+              data-dismiss="modal"
+              data-target="#creNotiModal2"
+            >
+              Volver
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #2797d2"
+              data-dismiss="modal"
+              id="btnCreNotiFin"
+            >
+              Finalizar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- -- Reporte Notificaciones -->
+    <div
+      class="modal fade rep-noti-m"
+      id="repNotiModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Reporte Notificaciones
+            </h5>
+            <a href="#" type="button" data-dismiss="modal" aria-label="Close"
+              ><i class="icon-close"></i
+            ></a>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <table
+              id="tblRepNoti"
+              class="table3 table table-striped"
+              style="background: #fff; border-radius: 10px"
+            ></table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #2797d2"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- -- Reporte Login Clientes -->
+    <div
+      class="modal fade rep-login-m"
+      id="repLoginModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Reporte Login de Clientes
+            </h5>
+            <a href="#" type="button" data-dismiss="modal" aria-label="Close"
+              ><i class="icon-close"></i
+            ></a>
+          </div>
+          <div class="modal-body">
+            <div class="inputs-box">
+              <div>
+                <input
+                  type="text"
+                  class="form-control"
+                  style="cursor: pointer"
+                  placeholder="ID Cliente"
+                  data-toggle="modal"
+                  data-target="#modalBuscarClienteTablaRepLog"
+                  id="inputSelectCliRepLog"
+                />
+              </div>
+              <div>
+                <div class="input-group">
+                  <input
+                    type="date"
+                    id="fechaDesdeRepLogin"
+                    class="form-control"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="date"
+                    id="fechaHastaRepLogin"
+                    class="form-control"
+                  />
+                </div>
+                <button
+                  class="btn btn-primary"
+                  id="btnConsultarRepLogin"
+                  style="background-color: #2797d2"
+                >
+                  <i class="icon-buscar"></i>
+                </button>
+              </div>
+            </div>
+            <div class="table-box">
+              <div class="tabla">
+                <div class="table-responsive">
+                  <table
+                    id="tblRepLoginCli"
+                    class="
+                      table3
+                      table table-hover table-sm
+                      display
+                      compact
+                      cell-border
+                    "
+                    style="background: #fff; border-radius: 10px; width: 100%"
+                  ></table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="background-color: #2797d2"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Agregar Usuario -->
+    <div
+      class="modal fade"
+      id="addUser"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="row" style="background: none">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombreCli">Nombre/Razón Social</label>
+                    <input
+                      type="text"
+                      class="input-add form-control"
+                      name="nombreCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="idCli">Identificación</label>
+                    <input
+                      type="text"
+                      class="input-add form-control"
+                      name="idCli"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="background: none">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="emailCli">Email</label>
+                    <input
+                      type="email"
+                      class="input-add form-control"
+                      name="emailCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="telCli">Teléfono</label>
+                    <input
+                      type="number"
+                      class="input-add form-control"
+                      name="telCli"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-dismiss="modal"
+              id="btnAddUser"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalFinCreUser"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Agregar Usuario</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span class="icon-verificado" style="color: #afcb3d"></span>
+            <p>Su notificación se ha creado y enviado exitosamente</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btnFinAccion"
+              onclick="reloadPage()"
+              data-dismiss="modal"
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Editar Usuario -->
+    <div
+      class="modal fade"
+      id="editUser"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="nombreEdiCli">Nombre/Razón Social</label>
+                    <input
+                      type="text"
+                      class="input-edit form-control"
+                      name="nombreEdiCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="idEdiCli">Identificación</label>
+                    <input
+                      type="text"
+                      class="input-edit form-control"
+                      name="idEdiCli"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="emailEdiCli">Email</label>
+                    <input
+                      type="email"
+                      class="input-edit form-control"
+                      name="emailEdiCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="telEdiCli">Teléfono</label>
+                    <input
+                      type="number"
+                      class="input-edit form-control"
+                      name="telEdiCli"
+                    />
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div class="col-md-6">
+                  <label for="slcEstado">Estado:</label>
+                  <select class="custom-select" name="slcEstado" id="slcEstadoUser">
+                  </select>
+                </div>
+              </div> -->
+            </form>
+            <!-- <button class="btn btn-danger" id="btnInactUser">Inactivar usuario</button> -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              data-toggle="modal"
+              id="btnEditUser"
+            >
+              Editar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalFinEditUser"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span class="icon-verificado" style="color: #afcb3d"></span>
+            <p>El usuario se ha editado exitosamente.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Ok
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial Eventos Documentos Electrónicos -->
+    <div
+      class="modal fade his-evnt-m"
+      id="hisEvntModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalLabel"
+              style="color: midnightblue"
+            >
+              Historial de eventos de documentos electrónicos
+            </h5>
+            <button class="btn btn-primary">
+              <i class="icon-descargaXls"></i>
+            </button>
+            <a href="#" type="button" data-bs-dismiss="modal"
+              ><i class="icon-close"></i
+            ></a>
+          </div>
+          <div class="modal-body">
+            <div class="data-box">
+              <div
+                class="data-box__id"
+                style="border-bottom: 1px solid #666666"
+              >
+                <span>Id Cliente:</span>
+                <p>2423523452452435</p>
+              </div>
+              <div
+                class="data-box__name"
+                style="border-bottom: 1px solid #666666"
+              >
+                <span>Nombre/Razon social:</span>
+                <p>Terpel S.A</p>
+              </div>
+              <div class="data-box__status">
+                <span>Estado:</span>
+                <p>Inactivo</p>
+              </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline">
+              <table>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>08-ago-2001</td>
+                  <td>01:00:00</td>
+                  <td>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Buscar Cliente 1st step -->
+    <div
+      class="modal fade"
+      id="exampleModalBuscarClienteTabla"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Buscar Cliente</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="administrartabla">
+              <div class="table-responsive modalOrden">
+                <table
+                  id="tblSelectCli"
+                  class="table table-hover table-sm display compact cell-border"
+                  style="width: 100%"
+                ></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Buscar Cliente Reporte Login 1st step -->
+    <div
+      class="modal fade"
+      id="modalBuscarClienteTablaRepLog"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Buscar Cliente</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="administrartabla">
+              <div class="table-responsive modalOrden">
+                <table
+                  id="tblSelectCliRepLogin"
+                  class="table table-hover table-sm display compact cell-border"
+                  style="width: 100%; background: #fff; border-radius: 10px"
+                ></table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Show Message-->
+    <div
+      class="modal fade"
+      id="modalShowMsg"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Contenido del Mensaje
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p id="modalShowMsgBox"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="data">
+        <div class="bx data1">
+          <div>
+            <i class="icon-clientes"></i>
+            <span>Clientes</span>
+          </div>
+          <span id="clients"></span>
+        </div>
+        <div class="bx data2">
+          <div>
+            <i class="icon-notificacionSend"></i>
+            <span>Notificaciones enviadas</span>
+          </div>
+          <span id="notiSent"></span>
+        </div>
+        <div class="bx data3">
+          <div>
+            <i class="icon-sesionIniciada"></i>
+            <span>Han iniciado sesión en eDoc Cliente</span>
+          </div>
+          <span id="totalUserConnected"></span>
+        </div>
+      </div>
+      <div class="buttons-box">
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            style="background-color: #2797d2"
+            data-toggle="modal"
+            data-target="#creNotiModal"
+            id="btnVerifyInputs"
+          >
+            <i class="icon-add"></i> Crear notificación
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            style="background-color: #2797d2"
+            data-toggle="modal"
+            data-target="#repNotiModal"
+            id="btnShowNotiTable"
+          >
+            <i class="icon-notificacionSend"></i> Reporte notificación
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            id="btnConsulta"
+            class="btn btn-primary"
+            style="background-color: #2797d2"
+            data-toggle="modal"
+            data-target="#repLoginModal"
+          >
+            <i class="icon-sesionIniciada"></i> Reporte login
+          </button>
+        </div>
+      </div>
+      <div class="inputs-box">
+        <div>
+          <input
+            type="text"
+            class="form-control"
+            style="cursor: pointer"
+            placeholder="ID Cliente"
+            data-toggle="modal"
+            data-target="#exampleModalBuscarClienteTabla"
+            id="idClientFilter"
+          />
+        </div>
+        <div>
+          <div class="input-group">
+            <input type="date" id="fechaDesde" class="form-control" />
+          </div>
+          <div class="input-group">
+            <input type="date" id="fechaHasta" class="form-control" />
+          </div>
+          <button
+            class="btn btn-primary"
+            id="btnConsultar"
+            style="background-color: #2797d2"
+          >
+            <i class="icon-buscar"></i>
+          </button>
+        </div>
+      </div>
+      <!-- <div class="box-2" style="padding: 0 20px">
+        <button
+          class="btn btn-primary"
+          style="background-color: #2797d2; margin-right: 10px"
+        >
+          <i class="icon-xml"></i>
+        </button>
+        <div class="input-group">
+          <div style="display: flex">
+             <input
+            type="text"
+            class="form-control"
+            placeholder="Buscar"
+            aria-label="Buscar"
+            aria-describedby="button-addon2"
+          />
+          <button class="btn btn-primary" type="button" id="button-addon2">
+            <i class="icon-buscar"></i>
+          </button> 
+            <div style="display: flex; background: rgb(235, 235, 235)">
+              <input
+                type="text"
+                placeholder="Buscar"
+                style="
+                  border-radius: 10px 0 0 10px;
+                  background: #fff;
+                  color: rgba(179, 179, 179, 0.815);
+                  border: none;
+                  font-size: 13px;
+                  width: 300px;
+                  text-align: left;
+                  padding: 8px 5px 8px 15px;
+                "
+              />
+              <button
+                type="button"
+                class="btn btn-primary"
+                style="
+                  background-color: #2797d2;
+                  border-radius: 0px 10px 10px 0px;
+                "
+              >
+                <span
+                  class="icon-buscar"
+                  style="
+                    width: 15px;
+                    height: 15px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                    margin: 4px 0px 4px 0px;
+                  "
+                ></span>
+              </button>
+            </div>
+            <ul style="list-style: none; margin: 0; padding: 0">
+              <li class="dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  style="color: #000"
+                >
+                  Mostrar 10
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">5</a>
+                  <a class="dropdown-item" href="#">8</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">20</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+
+      <button
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#addUser"
+        style="background: #2797d2"
+      >
+        <i class="icon-add"></i> Agregar Usuario
+      </button>
+      <!-- Table -->
+      <div class="table-box">
+        <div class="tabla">
+          <!-- <div class="table-responsive">
+            <table
+              id="tablex"
+              class="table3 table table-striped"
+              style="background: #fff; border-radius: 10px"
+            ></table>
+          </div> -->
+          <div class="table-responsive">
+            <table
+              class="
+                table3
+                table table-hover table-sm
+                display
+                compact
+                cell-border
+              "
+              id="tablex"
+            ></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/bootstrap4.min.js"></script>
+    <script src="../assets/datatables/datatables.min.js"></script>
+    <!-- <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script> -->
+    <script src="../assets/datatables/datatablegs.js"></script>
+    <script src="../assets/js/moment.js"></script>
+    <script src="../assets/js/moment-locale-es.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/moni-edoc-cliente.js" type="module"></script>
+  </body>
+</html>

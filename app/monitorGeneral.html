@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script src="datetimepicker/jquery-3.3.1.min.js"></script> -->
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!-- tagsly -->
+    <link rel="stylesheet" href="tagsly/tagsly.css">
+
+    <!-- datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/dataTables.css">
+    <script src="dataTable/datatablegs (1).js"></script>
+
+    <!-- <link href="datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
+    
+    <link rel="stylesheet" href="css/monitorGeneralMail.css">
+    <link rel="stylesheet" href="css/verHistorialDeEventos.css">
+    <link rel="stylesheet" href="css/modalEstilos.css">
+    <link rel="stylesheet" href="../assets/css/icons_portalConsulta-v1.0/icons.css">
+    <link rel="stylesheet" href="css/dataTables.css">
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script src="libreria-ajax/jquery.min.js" type="text/javascript"></script>
+        <!-- <script src="../assets/js/jquery-3.6.0.min.js"></script> -->
+    <title>MonitorGeneral</title>
+</head>
+
+<body>
+
+<main>
+
+    <!-- <div>
+        <p style="color: #24356b; font-weight: bold; font-size: 30px; padding-left: 35px; padding-top: 10px; margin: 0;"><em>Monitor General</em></p>
+    </div> -->
+
+    <!--------------------------------ventanas modales----------------------------------------->
+
+    <!--edit true-false-->
+
+    <div class="modal fade" id="editarRolModal" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div id="para" role="document" class="modal-dialog modal-sm espacioCabezal">
+            <div id="agrandarModal" class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="editTrueFalse">
+                        ------------</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div class="estiloBoton2">
+                            <button data-dismiss="modal" aria-label="Close" class="btn btn-primary estiloEspacioBoton2">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------visualizar pdf----------------------------------------->
+
+    <div class="modal fade" id="modalPdf" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-lg " style="padding-top: 30px;">
+            <div class="modal-content centrarContenido" >
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        PDF</h5>
+                </div>
+
+                <!--contenido modal-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div id="spinnerPdf" class="spinner-border text-primary" role="status" style="margin-top: 150px;">
+                            <!-- <span class="sr-only">Loading...</span> -->
+                        </div>
+                        <div id="PdfModal" style="height: 400px; padding-top: 0px; padding-bottom: 10px;">
+                            <iframe id='framePDF' runat='server' frameborder='0' scrolling='auto' src ='' type = 'application/pdf' style = 'width:100%; height:100%'></iframe >
+                        </div>
+                            
+                        </div>
+                        <div class="estiloBoton">
+                            <button data-toggle="modal" data-dismiss="modal" aria-label="Close"
+                                class="btn btn-primary estiloEspacioBoton">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------reenviar correo----------------------------------------->
+
+    <!-- Modal -->
+    <div class="modal fade" id="verreenviarcorreo" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-lg espacioCabezal">
+            <div class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        Escriba uno o varios correos electrónicos separados por ";"</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal" style="padding-top: 0px;">
+                    <div>
+                        <div style="padding-right: 8px;">
+                            <input id="enviarCorreoInput" type="text" placeholder="Correo eléctronico" class="focusNone estiloInput" >
+                        </div>
+                        <div class="estiloBoton">
+                            <button id="enviarVariosCorreos" data-toggle="modal" data-dismiss="modal" aria-label="Close" 
+                                class="btn btn-primary estiloEspacioBoton">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--correo enviado exitosamente-->
+
+    <div class="modal fade" id="correoenviadoexitosamente" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-sm espacioCabezal">
+            <div class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        Correo enviado exitosamente</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div class="estiloBoton2">
+                            <button data-dismiss="modal" aria-label="Close" class="btn btn-primary estiloEspacioBoton2">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------reenviar whatsapp----------------------------------------->
+
+    <!-- Modal -->
+    <div class="modal fade" id="verreenviarwhatsapp" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-lg espacioCabezal">
+            <div class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        Escriba uno o varios números telefónicos separados por ";"</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div>
+                            <input type="text" placeholder="Número telefónico" class="focusNone estiloInput">
+                        </div>
+                        <div class="estiloBoton">
+                            <button data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#whatsappenviadoexitosamente" 
+                                class="btn btn-primary estiloEspacioBoton">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--whatsapp enviado exitosamente-->
+
+    <div class="modal fade" id="whatsappenviadoexitosamente" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-sm espacioCabezal">
+            <div class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        Whatsapp enviado exitosamente</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div class="estiloBoton2">
+                            <button data-dismiss="modal" aria-label="Close" class="btn btn-primary estiloEspacioBoton2">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------reenviar sms----------------------------------------->
+
+    <!-- Modal -->
+    <div class="modal fade" id="verreenviarsms" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-lg espacioCabezal">
+            <div class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        Escriba uno o varios números telefónicos separados por ";"</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div>
+                            <input type="text" placeholder="Número telefónico" class="focusNone estiloInput">
+                        </div>
+                        <div class="estiloBoton">
+                            <button data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#smsenviadoexitosamente" 
+                                class="btn btn-primary estiloEspacioBoton">Enviar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--sms enviado exitosamente-->
+
+    <div class="modal fade" id="smsenviadoexitosamente" tabindex="-1" aria-labelledby="exampleModalLabel"   
+        aria-hidden="true">
+    
+        <!--x y cabezal-->
+        <div role="document" class="modal-dialog modal-sm espacioCabezal">
+            <div class="modal-content centrarContenido">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                        SMS enviado exitosamente</h5>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body estiloCuerpoModal">
+                    <div>
+                        <div class="estiloBoton2">
+                            <button data-dismiss="modal" aria-label="Close" class="btn btn-primary estiloEspacioBoton2">Ok</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------------Ver historial de eventos--------------------------------------------->
+    <!-- Modal -->
+    <div class="modal fade" id="verhistorialdeeventos" tabindex="-1" aria-labelledby="exampleModalLabel"  
+        aria-hidden="true">
+    
+        <!--X, cabezal y tamaño-->
+        <div role="document" class="modal-dialog modal-lg">
+            <div class="modal-content contenidoEventos">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title tituloEventos" id="exampleModalLabel">Historial de eventos de documentos eléctronicos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body cuerpoEventos">
+                    <div>
+                        <div class="contenedorHistorialEventos">
+                            <!--espacio1-->
+                            <div class="espacio1 espacio1Eventos">
+                                <table class="tabla2 table table-sm table-borderless espacio1TablaEventos">
+                                    <tbody class="cuerpoTabla">
+                                      <tr>
+                                        <td class="espacio2td1">Autorizadas</td>
+                                        <td class="espacio2td2">5</td>                            
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Rechazadas</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente envio</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente validación</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente validación</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente validación</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <!--espacio2-->
+                            <div class="espacio2">
+                                <p class="espacio2-4Eventosp1">Fecha y hora registro eDoc:</p><br>
+                                <p class="espacio2-4Eventosp2">08/08/2021 - 01:00:00</p>
+                            </div>
+                            <!--espacio3-->
+                            <div class="espacio3 espacio3Eventos">
+                                <p class="espacio3Titulo">Validaciones:</p>
+                                <table class="tabla2 table table-sm table-borderless table-striped espacio3Tabla">
+                                    <tbody class="espacio3Cuerpo">
+                                      <tr>
+                                        <td class="espacio3td1">Autorizadas</td>
+                                        <td class="espacio3td2">5</td>                            
+                                      </tr>
+                                      <tr>
+                                        <td class="espacio3td1-1">Rechazadas</td>
+                                        <td class="espacio3td2">2</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="espacio3td1">Pendiente envio</td>
+                                        <td class="espacio3td2">2</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="espacio3td1-1">Pendiente validación</td>
+                                        <td class="espacio3td2">2</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <!--espacio4-->
+                            <div class="espacio4">
+                                <p class="espacio2-4Eventosp1">Fecha y hora registro eDoc:</p><br>
+                                <p class="espacio2-4Eventosp2">08/08/2021 - 01:00:00</p>
+                            </div>
+                            <!--espacio5-->
+                            <div class="espacio5">
+                                <table class="table4 table table-sm table-striped table-borderless">
+                                    <thead>  
+                                        <tr>
+                                            <th data-field="accion" class="espacio5thead" scope="col">Acción</th>
+                                            <th data-field="estado" class="espacio5thead" scope="col">Estado</th>
+                                            <th data-field="noedoc" class="espacio5thead" scope="col">No. Doc</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <th scope="row" class="tablarow1">
+                                            <div class="tabladiv">1</div>
+                                        </th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                        <td class="bordes1"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="tabladiv">2</th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bordes2">3</th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                        <td class="bordes1"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="tabladiv">4</th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="espacio6">
+                                <div class="btn btn-primary espacio6btn1" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#verhistorialdeeventos2">Ver línea de tiempo</div>
+                                <div class="btn btn-primary espacio6btn2" data-toggle="modal" data-dismiss="modal" aria-label="Close">Cerrar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------------Ver historial de eventos 2--------------------------------------------->
+    <!-- Modal -->
+    <div class="modal fade" id="verhistorialdeeventos2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+        <!--X, cabezal y tamaño-->
+        <div role="document" class="modal-dialog modal-lg" >
+            <div class="modal-content contenidoEventos">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title tituloEventos" id="exampleModalLabel">Historial de eventos de documentos eléctronicos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body cuerpoEventos">
+                    <div>
+                        <div class="contenedorHistorialEventos2">
+                            <!--espacio1-1-->
+                            <div class="espacio1-1 espacio1Eventos">
+                                <table class="tabla2 table table-sm table-borderless espacio1TablaEventos">
+                                    <tbody class="cuerpoTabla">
+                                      <tr>
+                                        <td class="espacio1-1td1">Autorizadas</td>
+                                        <td class="espacio1-1td2">5</td>                            
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Rechazadas</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente envio</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente validación</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente validación</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente validación</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <!--espacio2-1-->
+                            <div class="espacio2-1">
+                                <ul class="timeline">
+                                    <li>
+                                        <p style="padding-left: 25px;">Lorem ipsum dolor sit amet</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Curabitur purus sem, malesuada eu luctus eget</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--espacio3-1-->
+                            <div class="espacio3-1">
+                                <div class="btn btn-primary espacio6btn1" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#verhistorialdeeventos">Ver por módulos</div>
+                                <div class="btn btn-primary espacio6btn2" data-toggle="modal" data-dismiss="modal" aria-label="Close">Cerrar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------contenido----------------------------------------->
+
+    <div id="cuerpoPrincipal" class="margenIzquierda contenedorestilo">
+        <div class="contenedor">
+            <div class="contenido">
+                <div class="slot1">
+                    <span class="icon-emitidas contenedorslot1"></span>
+                    <p class="contenedorslot1p">
+                        <a class="contenedorslot1pa" id="facturasEmitidasHoy">0</a><br>Facturas<br>emitidas</p>
+                </div>
+                <div class="slot1">
+                    <span class="icon-notaDebito-grande contenedorslot1"></span>
+                    <p class="contenedorslot1p">
+                        <a class="contenedorslot1pa" id="notaDebito">0</a><br>Nota<br>débito</p>
+                </div>
+                <div class="slot1">
+                    <span class="icon-notaCredito-grande contenedorslot1"></span>
+                    <p class="contenedorslot1p">
+                        <a class="contenedorslot1pa" id="notaCredito">0</a><br>Nota<br>crédito</p>
+                </div>
+                <div class="slot2">
+                    <table class="tabla2 table table-sm table-borderless contenedorslot2tabla">
+                        <tbody class="contenedorslot2tablab">
+                          <tr class="contenidoslot2tablatr">
+                            <td>Total autorizadas</td>
+                            <td id="autorizadas" class="contenidoslot2tablatd">0</td>                            
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                            <td>Total rechazadas</td>
+                            <td id="rechazadas" class="contenidoslot2tablatd">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                            <td>Total pendiente envio</td>
+                            <td id="pendienteEnvio" class="contenidoslot2tablatd">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                            <td>Total pendiente validación</td>
+                            <td id="pendienteValidacion" class="contenidoslot2tablatd">0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="slot1">
+                    <span class="icon-emitidas contenedorslot1"></span>
+                    <p class="contenedorslot1p">
+                        <a class="contenedorslot1pa" id="totalDocumentos">0</a><br>Documentos<br>totales</p>
+                </div>
+                <!-- <div class="slot1">
+                    <span class="icon-emitidas contenedorslot1"></span>
+                    <p class="contenedorslot1p">
+                        <a class="contenedorslot1pa" id="facturasEmitidasHoy">0</a><br>Facturas<br>emitidas</p>
+                </div>
+                <div class="slot2">
+                    <table class="tabla2 table table-sm table-borderless contenedorslot2tabla">
+                        <tbody class="contenedorslot2tablab">
+                          <tr class="contenidoslot2tablatr">
+                            <td>Total autorizadas</td>
+                            <td id="autorizadas" class="contenidoslot2tablatd">0</td>                            
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                            <td>Total rechazadas</td>
+                            <td id="rechazadas" class="contenidoslot2tablatd">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                            <td>Total pendiente envio</td>
+                            <td id="pendienteEnvio" class="contenidoslot2tablatd">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr">
+                            <td>Total pendiente validación</td>
+                            <td id="pendienteValidacion" class="contenidoslot2tablatd">0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                
+                </div>
+                <div class="slot3">
+                    <table class="tabla2 table table-borderless contenedorslot3">
+                        <tbody class="contenedorslot3b">
+                          <tr>
+                            <td><span class="icon-notaCredito contenedorslot3td2"></span>
+                                Nota crédito</td>
+                            <td id="notaCredito" class="contenedorslot3td">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenedorslot3tr">
+                            <td><span class="icon-notaDebito contenedorslot3td2"></span>
+                                Nota débito</td>
+                            <td id="notaDebito" class="contenedorslot3td">0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div> -->
+            </div>
+
+            <!--------------------------------Fecha----------------------------------------->
+
+        <div class="fecha" style="display: flex; grid-column: span 1; background: rgb(235, 235, 235);">
+            <div class="fecha2div">
+                <input type="date" name="fecha" id="fechaDesde" class="fechaGeneral form-control" >
+            </div>
+            <div class="fecha2div">
+                <input type="date" name="fecha" id="fechaHasta" class="fechaGeneral form-control">
+            </div>
+        </div>
+
+        <!--------------------------------dropdowns----------------------------------------->
+
+        <div class="buscar select" style="background: rgb(235, 235, 235); display: flex; grid-column: span 1; gap: 10px">
+            <select name="Operacion" id="opciones1" 
+                style="width: 50%; height: 35px; border-radius: 10px; color: #c4c4c4; border: none; font-size: 13px; padding-left: 10px;">
+                       
+            </select>
+            <!-- <div class="dropdown" style="background: rgb(235, 235, 235); display: grid; grid-column: span 1;">
+                <button class=" dropdown-toggle buscar2btnestilo" type="button" id="dropdownMenuButton1" 
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                -------
+                </button>
+                <div id="tiposDocumentos" class="dropdown-menu buscar2menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item buscar2menua" href="#">Todos los tipos de documentos</a>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <a class="dropdown-item buscar2menua" href="#">Factura</a>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <a class="dropdown-item buscar2menua" href="#">Nota Débito</a>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <a class="dropdown-item buscar2menua" href="#">Nota Crédito</a>
+                </div>
+              </div> -->
+              <select name="Operacion" id="opciones2" 
+                style="width: 50%; height: 35px; border-radius: 10px; color: #c4c4c4; border: none; font-size: 13px; padding-left: 10px;">
+                    
+            </select>
+        </div>
+
+            <!--------------------------------Buscar----------------------------------------->
+
+            <div class="buscarestilo colorPlace" style="background: rgb(235, 235, 235); display: flex; grid-column: span 1;">
+                <input id="clienteSeleccionado" type="search" class="buscarmasselecbtnprincipal" style="width: 100%;" data-toggle="modal" data-dismiss="modal"
+                    aria-label="Close" placeholder="Búsqueda cliente" data-target="#exampleModalBuscarCliente" readonly>
+                    <button id="clickX" type="button" class="btn btn-primary buscartablaestilobtn1">
+                        <span class="icon-close buscartablaestilospan2"></span>
+                    </button>
+                </input>
+
+                <!------------------------boton buscar------------------------>
+
+                <div class="fecha" style="display: flex; grid-column: span 1; background: rgb(235, 235, 235); margin-left: 10px;">
+
+                    <!-- Button trigger modal -->
+                    <button id="btnConsultarGeneral" type="button" class="btn btn-primary buscartablaestilobtn" data-toggle="modal" data-target="#exampleModal" style="border-radius: 10px; display: initial;">
+                        <span class="icon-buscar fecha2divspan"></span>
+                    </button>
+                    <!-- <button id="btnGris" onclick="tablaDocumentosClick()" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#antesde" style="border-radius: 10px; display: initial;">
+                        <span class="icon-buscar fecha2divspan"></span>
+                    </button> -->
+
+                </div>
+
+
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalBuscarCliente" tabindex="-1" aria-labelledby="exampleModalLabel"   
+                aria-hidden="true" style="background: transparent;">
+            
+                <!--x y cabezal-->
+                <div role="document" class="modal-dialog buscarcabezal">
+                    <div class="modal-content buscarcontenido">
+                        <div class="modal-header sinBorde">
+                            <h5 class="modal-title buscartitulo" id="exampleModalLabel">Búsqueda cliente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!--Boton Buscar cliente-->
+                        <div class="modal-body buscarcuerpo">
+                            <div class="buscarcuerpodiv">
+                                <button id="llenarTableBuscarCliente" type="button" class="buscarcuerpobtn" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#exampleModalBuscarClienteTabla">
+                                   Nombre o razón social
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#exampleModalBuscarClienteTabla" 
+                                    style="border-radius: 0px 10px 10px 0px; background: #2797d2; border: none;">
+                                    <span class="icon-buscar buscarcuerpobtn2span"></span>
+                                </button>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-----------------------------adentro------------------------------->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalBuscarClienteTabla" tabindex="-1" aria-labelledby="exampleModalLabel"   
+            aria-hidden="true" style="background: transparent;">
+            
+            <div role="document" class="modal-dialog modal-lg buscaradentrodialog" style="padding-top: 10px;">
+                <div class="modal-content buscaradentrocontent" style="height: 560px;">
+                    <div class="modal-header sinBorde" >
+                        <h5 class="modal-title buscaradentrotitulo" id="exampleModalLabel">Búsqueda cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" > 
+                        <div class="buscaradentrocuerpo" >
+                            <input id="buscar" class="focusNone buscaradentroinput" type="text" placeholder="No. Identificación" >
+                            <button id="seleccionarClienteSelect" type="button" class="btn btn-primary buscaradentroinputbtn" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#buscarseleccionar" >
+                                <span class="icon-buscar buscaradentroinputbtnspan"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="administrartabla" style="margin-bottom: 20px;">
+                        <div class="table-responsive modalOrden" style="padding: 10px">
+                            <table id="tablaBuscarClientesGeneral" class="table is-striped table-hover table-sm display compact cell-border">
+                                
+                                    
+                            </table>
+                        </div>
+                    </div>
+                    <!-- <div class="botonDesCerAling" style="padding-bottom: 20px;">
+                        <button class="btn btn-primary botonDesCer">Decargar</button>
+                        <button class="btn btn-primary botonDesCer" data-dismiss="modal" aria-label="Close">Cerrar</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!--------------------------------Buscar + boton seleccionar----------------------------------------->
+
+        <!-- Modal -->
+        <div class="modal fade" id="buscarseleccionar" tabindex="-1" aria-labelledby="exampleModalLabel"   
+            aria-hidden="true" style="background: transparent;">
+        
+            <!--x y cabezal-->
+            <div role="document" class="modal-dialog buscarmasselecdialog">
+                <div class="modal-content buscarmasseleccontent">
+                    <div class="modal-header sinBorde colorPlace">
+                        <h5 class="modal-title buscarmasselectitulo" id="exampleModalLabel">Búsqueda cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!--Boton Buscar cliente-->
+                    <div class="modal-body" style="background: rgb(235, 235, 235); border-radius: 0px 0px 20px 20px;">
+                        <div class="buscarmasselecdiv">
+                            <input id="seleccionarCliente" class="buscarmasselecbtn1" data-toggle="modal" data-dismiss="modal" 
+                                aria-label="Close" data-target="#exampleModalBuscarClienteTabla" readonly>
+                            </input>
+                            <button type="button" class="btn btn-primary buscarmasselecbtn2" data-toggle="modal" data-dismiss="modal" 
+                                aria-label="Close" data-target="#exampleModalBuscarClienteTabla">
+                                <span class="icon-buscar buscarmasselecbtn2span"></span>
+                            </button>
+                        </div>  
+                    </div>
+                    <div class="buscarmasselecespacio">
+                        <button id="clienteSeleccionadoSelect" class="btn btn-primary"data-toggle="modal" data-dismiss="modal" 
+                            aria-label="Close" style="border-radius: 10px; background: #2797d2;
+                                border: none;">Seleccionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+            
+            
+
+            <!--------------------------------Buscar----------------------------------------->
+
+            <!-- <div class="buscar" style="background: rgb(235, 235, 235); display: grid; grid-column: span 1;"> -->
+                
+                <!-- <div class="dropdown" style="background: rgb(235, 235, 235); display: grid; grid-column: span 1;">
+                    <button class=" dropdown-toggle buscar2btnestilo" type="button" id="dropdownMenuButton1" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ---------
+                    </button>
+                    <div id="estadosDocumentos" class="dropdown-menu buscar2menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item buscar2menua" selected="selected" href="#">Todos los estados de documentos</a>
+                            <div class="lineaHorizontal buscar2menudiv"></div>
+                            <a class="dropdown-item buscar2menua" href="#">No enviado</a>
+                            <div class="lineaHorizontal buscar2menudiv"></div>
+                            <a class="dropdown-item buscar2menua" href="#">Autorizados</a>
+                            <div class="lineaHorizontal buscar2menudiv"></div>
+                            <a class="dropdown-item buscar2menua" href="#">Rechazados</a>
+                            <div class="lineaHorizontal buscar2menudiv"></div>
+                            <a class="dropdown-item buscar2menua" href="#">Devueltos</a>
+                            <div class="lineaHorizontal buscar2menudiv"></div>
+                            <a class="dropdown-item buscar2menua" href="#">Error en firma</a>
+                    </div>
+                  </div> -->
+            <!-- </div> -->
+
+            
+            
+
+            
+
+                <!-- <button type='button' class='btn btn-lg btn-danger' data-toggle='popover' title='Popover title' data-content='And heres some amazing content. It very engaging. Right?'>Click to toggle popover</button> -->
+
+                <!--------------------------------modal Antes de ---------------------------->
+
+                <!-- <div class="modal fade" id="antesde" tabindex="-1" aria-labelledby="exampleModalLabel"   
+                aria-hidden="true" style="background: transparent;"> -->
+
+                <!--x y cabezal-->
+                <!-- <div role="document" class="modal-dialog modal-lg espacioCabezal">
+                    <div class="modal-content centrarContenido">
+                        <div class="modal-header sinBorde">
+                            <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                                Antes de buscar, verifica que "Tipos de documentos" y "Estados de documentos" contengan algún parámetro</h5>
+                        </div> -->
+
+                        <!--Boton Buscar cliente-->
+                        <!-- <div class="modal-body estiloCuerpoModal">
+                            <div>
+                                <div class="estiloBoton">
+                                    <button data-toggle="modal" data-dismiss="modal" aria-label="Close" 
+                                        class="btn btn-primary estiloEspacioBoton">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+                <!--------------------------------Buscar Tabla----------------------------------------->
+
+                <!-- <div class="buscarTabla buscartablaestilo" style="background: rgb(235, 235, 235);"> -->
+                    <!-- Button trigger modal -->
+                    <!-- <button type="button" class="btn btn-primary buscartablaestilobtn">
+                        <span class="icon-descargaXls buscartablaestilospan"></span>
+                    </button> -->
+
+                    <!--buscar tabla-->
+
+                    <!-- <div style="display: flex; background: rgb(235, 235, 235);">
+                        <input type="text" placeholder="Buscar"style="border-radius: 10px 0 0 10px; background: #fff; color: rgba(179, 179, 179, 0.815); border: none; font-size: 13px; width: 300px; text-align: left; padding: 8px 5px 8px 15px;">
+                        <button type="button" class="btn btn-primary buscartablaestilobtn1">
+                            <span class="icon-buscar buscartablaestilospan2"></span>
+                        </button>
+                    </div>
+
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle buscartablaestilobtn2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Mostrar 5
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Cinco</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Diez</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Quince</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Veinte</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Todos</a>
+                            
+                        </div>
+                      </div>
+                </div> -->
+
+            <!--------------------------------Tabla----------------------------------------->
+
+            <!-- <div id="tablaPrimaria" class="tabla div-datatable" style="padding: 20px;">
+                <div class="table-responsive table-wrapper">
+                    <table id="tablaDocumentos" class="table is-striped table-hover table-sm display compact cell-border" >
+                        
+                            
+                    </table>
+                </div>
+            </div> -->
+
+            <div id="tablaSecundaria" class="tabla div-datatable" style="padding: 20px;">
+                <div class="table-responsive table-wrapper">
+                    <table id="tablaDocumentos2" class="table is-striped table-hover table-sm display compact cell-border" >
+                        
+                            
+                    </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</main>
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper js, then Bootstrap js -->
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
+<script src="../assets/js/popper.min.js"></script>
+
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+<script src="../assets/js/bootstrap4.min.js"></script>
+
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="dataTable/datatablegs (1).js"></script>
+
+<!-- tagsly -->
+<script src="../assets/js/tagsly.js"></script>
+
+<!--ventanas emergentes-->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- moment js -->
+<script src="moment/moment.js"></script>
+<script src="moment/moment-locale-es.js"></script>
+
+<!--datetimepicker-->
+<!-- <script src="datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="datetimepicker/scripts.js"></script> -->
+
+<script src="js/obtenerClientes.js" type="module" charset="utf-8"></script>
+<script src="../assets/js/main.js" type="module"></script>
+
+</body>
+</html>

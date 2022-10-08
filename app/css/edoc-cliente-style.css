@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,300;1,500;1,600&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sorting_1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sorting_1 > button {
+  background: none;
+}
+
+#tablex__wrapper {
+  overflow-x: auto;
+}
+
+#editUser form > .row {
+  background: none;
+}
+
+html, body {
+  background: #f2f2f2;
+}
+
+body {
+  padding-top: 25px;
+}
+
+.dataTables_wrapper .dt-buttons {
+  left: 0%;
+}
+
+.dataTables_wrapper .row {
+  background: none;
+}
+
+/* Modal Styles */
+.modal .modal-dialog .modal-content {
+  background: #dadada;
+}
+
+.rep-noti-m .modal-header a,
+.rep-login-m .modal-header a,
+.cre-noti-m .modal-header a {
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.rep-noti-m .modal-body .m-input-box,
+.rep-login-m .modal-body .m-input-box {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.rep-noti-m .modal-body .m-input-box .input-group,
+.rep-login-m .modal-body .m-input-box .input-group {
+  width: 42%;
+  margin-right: 15px;
+}
+
+/* -- Modal Crear Notificacion */
+.cre-noti-m .modal-body .steps-box {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cre-noti-m .modal-body .steps-box .step-one-box,
+.cre-noti-m .modal-body .steps-box .step-two-box,
+.cre-noti-m .modal-body .steps-box .step-three-box {
+  width: 80px;
+}
+
+.cre-noti-m .modal-body .steps-box > div span:first-child {
+  font-size: 1.3em;
+  font-weight: bolder;
+  color: midnightblue;
+  padding: 10px 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.cre-noti-m .modal-body .steps-box > div span:last-child {
+  font-size: 0.9em;
+}
+
+.cre-noti-m .modal-body .steps-box div.active span:first-child {
+  color: #fff;
+  background: #afcb3a;
+}
+
+.cre-noti-m .modal-body .steps-box div.active span:last-child {
+  color: #afcb3a;
+}
+
+.cre-noti-m .modal-body .form-box div {
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 10px;
+}
+
+.cre-noti-m .modal-body .copy-box {
+  font-size: 0.9em;
+  padding: 8px 20px;
+}
+
+.cre-noti-m .modal-body .parent-box {
+  display: flex;
+  gap: 1em;
+}
+
+.cre-noti-m .modal-body .box {
+  width: 100%;
+}
+
+.cre-noti-m .modal-body .box .inner-box {
+  background: #fff;
+  /* text-align: center; */
+  display: table;
+  width: 100%;
+  height: 350px;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.cre-noti-m .modal-body .box .inner-box ul {
+  list-style: none;
+}
+/* 
+.cre-noti-m .modal-body .box .inner-box p {
+  display: table-cell;
+  vertical-align: middle;
+  color: #666666;
+} */
+
+/* -- Modal Reporte Login Clientes */
+.rep-login-m .m-inputs-box {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 15px;
+}
+
+.rep-login-m .m-inputs-box .date-inputs-box {
+  display: flex;
+  flex: 3 1 auto;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.rep-login-m .m-inputs-box .srch-cli-input-box {
+  display: flex;
+  flex: 8 1 auto;
+  gap: 1em;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  background: #f2f2f2;
+}
+
+.data {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.data .bx {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  font-size: 1.2em;
+  width: 30%;
+  padding: 5px 20px;
+}
+
+.data .bx span {
+  font-size: 0.7em;
+}
+
+.data .data1 {
+  border-radius: 10px 0 0 10px;
+}
+
+.data .data2 {
+  border-left: 1px solid #666666;
+  border-right: 1px solid #666666;
+}
+
+.data .data3 {
+  border-radius: 0 10px 10px 0;
+}
+
+.buttons-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.buttons-box div {
+  width: 28%;
+}
+
+.buttons-box > div .btn {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.inputs-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1em;
+  padding: 20px;
+}
+
+.inputs-box div:first-child {
+  flex: 8 1 auto;
+}
+
+.inputs-box div:first-child select {
+  width: 100%;
+}
+
+.inputs-box div:last-child {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 1em;
+}
+
+.box-2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.box-2 .input-group {
+  justify-content: flex-end;
+  width: auto;
+}
+
+/* -- Historial Eventos Documentos Electrónicos */
+.his-evnt-m .modal-body .data-box {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6em;
+  padding: 10px 18px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.his-evnt-m .modal-body .data-box > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.his-evnt-m .modal-body .data-box > div span {
+  font-weight: 500;
+  color: midnightblue;
+}
+
+.his-evnt-m .modal-body .data-box > div p {
+  margin-bottom: unset;
+}
+
+.his-evnt-m .modal-body .timeline {
+  background: #fff;
+  width: 100%;
+  height: 350px;
+  overflow-y: scroll;
+  border-radius: 10px;
+  color: midnightblue;
+}
+
+.his-evnt-m .modal-body .timeline table,
+.his-evnt-m .modal-body .timeline tr,
+.his-evnt-m .modal-body .timeline td {
+  border: none;
+}
+
+.his-evnt-m .modal-body .timeline tr,
+.his-evnt-m .modal-body .timeline td {
+  padding: 8px 10px;
+}
+
+/* Table */
+.focusNone:focus{
+  outline: none;
+  outline-offset: 0;
+}
+
+table tbody tr {
+  height: 50px;
+}
+
+table tbody tr span {
+  font-size: 1.6em;
+}
+
+table tbody tr .icon-add,
+table tbody tr .icon-close,
+table tbody tr .icon-editar,
+table tbody tr .icon-eliminar,
+table tbody tr .icon-visualizar {
+  color: #2797d2;
+}
+
+table td,
+table th {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+table td:first-child,
+table th:first-child  {
+  border-left: none;
+}
+
+table td:last-child,
+table th:last-child  {
+  border-right: none;
+}
+
+table tbody th .btn-group .opt-btn {
+  position: relative;
+  color: #000;
+  text-decoration: none;
+}
+
+table tbody th .btn-group .opt-list {
+  position: absolute;
+  display: none;
+  font-size: 0.8em;
+  width: 480px;
+  right: -490px;
+  padding: 5px;
+  background: #c3c3c3e1;
+  list-style: none;
+  border-radius: 10px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  box-shadow: 0 0 8px rgba(0, 0, 0, .2);
+  z-index: 999;
+}

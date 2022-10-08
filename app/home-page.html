@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="css/homepage-style.css" />
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/css/icons_portalConsulta-v1.0/icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <!-- ApexCharts -->
+    <script src="../assets/apexcharts/dist/apexcharts.js"></script>
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    
+    <title>Homepage</title>
+    
+  </head>
+  <body>
+    <div id="contenedorProfile"></div>
+    <!-- <button id="pruebaBoton">prueba boton</button> -->
+    <!-- Modal mantenimiento correo emision SMTP -->
+    <div
+      class="modal fade"
+      id="mantCorreoEmisionSMTP"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Mantenimiento Correo Emisión
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h4>Servidor de Correo</h4>
+            <form action="#">
+              <div class="row">
+                <div class="col-md-4">
+                  <!-- <select name="" class="input custom-select" onchange="onChangeSlc();" id="slcTipoEnvio">
+                    <option value="0">SMTP</option>
+                    <option value="1">Sengrid</option>
+                    <option value="2">Amazon</option>
+                  </select> -->
+                  <h5>Tipo envio: <span id="titleTipoEnvioCorreoEmi"></span></h5>
+                </div>
+              </div>
+              <div class="row" style="background: none">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="userEmi">Correo: </label>
+                    <input
+                      type="email"
+                      id="user1"
+                      class="input form-control"
+                      name="emailCli"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="passEmi">Clave: </label>
+                    <i class="bi bi-eye-slash pass-icon" id="togglePassword"></i>
+                    <input
+                      type="password"
+                      id="pass"
+                      class="input form-control password"
+                      name="telCli"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="row" style="background: none">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="correoEmi">Nombre del emisor: </label>
+                    <input
+                      type="text"
+                      id="correo"
+                      class="input form-control"
+                      name="nombreCli"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="servEmi">Servidor SMTP: </label>
+                    <input
+                      type="text"
+                      id="serv"
+                      class="input form-control"
+                      name="idCli"
+                      disabled
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="background: none">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="puertoEmi">Puerto: </label>
+                    <input
+                      type="email"
+                      id="port"
+                      class="input form-control"
+                      name="emailCli"
+                      disabled
+                    />
+                  </div>
+                </div>
+                <div
+                  class="col-md-6"
+                  style="display: flex; align-items: center"
+                >
+                  <input
+                    type="checkbox"
+                    id="cbox1"
+                    class="cbox"
+                    name="cbox"
+                    value=""
+                    style="margin-right: 10px"
+                  />
+                  <label for="cbox">Habilitar/Deshabilitar SSL</label>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-md-6">
+                  <input type="email" class="form-control" id="correoTest" placeholder="Ingrese un correo de prueba..." />
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary" id="btnTestCorreo">Probar correo</button>
+                </div>
+              </div>
+            </form>
+
+            <hr />
+
+            <h4>Acuse de Recibo en Email Documentos Emitidos</h4>
+            <div class="row">
+              <div class="col-md-4">
+                <label for="">Acuse de recibo:</label>
+                <input type="checkbox" id="cbox2" class="cbox" id="" value="" disabled />
+              </div>
+              <div class="col-md-8">
+                <label for="">Reenviar email cada:</label>
+                <input type="number" id="" value="100" disabled />
+                <b>dia/s</b>
+              </div>
+            </div>
+
+            <hr />
+
+            <h4>Link Adicionales en Email Documentos Emitidos</h4>
+            <div class="row">
+              <div class="col-md-12">
+                <label for="">Link de pago online:</label>
+                <input type="checkbox" id="cbox3" class="cbox" id="" value="" />
+              </div>
+              <div class="col-md-12">
+                <label for="">Link de acepta/rechaza documento:</label>
+                <input type="checkbox" id="cbox4" class="cbox" id="" value="" />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              id="btnEditCorreoEmi"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              data-toggle="modal"
+              data-target="#editCorreoEmisionSuccess"
+            >
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- 
+    Modal mantenimiento correo emision Sengrid 
+    <div
+    class="modal fade"
+    id="mantCorreoEmisionSengrid"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Mantenimiento Correo Emisión
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h4>Servidor de Correo</h4>
+          <form action="#">
+            <div class="row">
+              <div class="col-md-4">
+                <h4>Tipo envio: Sengrid</h4>
+              </div>
+            </div>
+            <div class="row" style="background: none">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="userEmi">Usuario: </label>
+                  <input
+                    type="email"
+                    id="user1Sengrid"
+                    class="input form-control"
+                    name="emailCli"
+                    disabled
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="passEmi">Clave: </label>
+                  <input
+                    type="password"
+                    id="passSengrid"
+                    class="input form-control"
+                    name="telCli"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="row" style="background: none">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="correoEmi">Nombre del emisor: </label>
+                  <input
+                    type="text"
+                    id="correoSengrid"
+                    class="input form-control"
+                    name="nombreCli"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="servEmi">Servidor SMTP: </label>
+                  <input
+                    type="text"
+                    id="servSengrid"
+                    class="input form-control"
+                    name="idCli"
+                    disabled
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row" style="background: none">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="puertoEmi">Puerto: </label>
+                  <input
+                    type="email"
+                    id="portSengrid"
+                    class="input form-control"
+                    name="emailCli"
+                  />
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+                style="display: flex; align-items: center"
+              >
+                <input
+                  type="checkbox"
+                  id="cbox1Sengrid"
+                  class="cbox"
+                  name="cbox"
+                  value=""
+                  style="margin-right: 10px"
+                />
+                <label for="cbox">Habilitar/Deshabilitar SSL</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <input type="email" class="form-control" id="correoTestSengrid" placeholder="Ingrese un correo de prueba..." />
+              </div>
+              <div class="col-md-3">
+                <button class="btn btn-primary" id="btnTestCorreoSengrid">Probar correo</button>
+              </div>
+            </div>
+          </form>
+
+          <hr />
+
+          <h4>Acuse de Recibo en Email Documentos Emitidos</h4>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="">Acuse de recibo:</label>
+              <input type="checkbox" id="cbox2Sengrid" class="cbox" id="" value="" disabled />
+            </div>
+            <div class="col-md-8">
+              <label for="">Reenviar email cada:</label>
+              <input type="number" id="" value="100" disabled />
+              <b>dia/s</b>
+            </div>
+          </div>
+
+          <hr />
+
+          <h4>Link Adicionales en Email Documentos Emitidos</h4>
+          <div class="row">
+            <div class="col-md-12">
+              <label for="">Link de pago online:</label>
+              <input type="checkbox" id="cbox3Sengrid" class="cbox" id="" value="" />
+            </div>
+            <div class="col-md-12">
+              <label for="">Link de acepta/rechaza documento:</label>
+              <input type="checkbox" id="cbox4Sengrid" class="cbox" id="" value="" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"
+          >
+            Cerrar
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="btnEditCorreoRec"
+            data-dismiss="modal"
+            data-toggle="modal"
+            data-target="#editCorreoEmisionSuccess"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  Modal mantenimiento correo emision Amazon
+  <div
+  class="modal fade"
+  id="mantCorreoEmisionAmazon"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Mantenimiento Correo Emisión
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h4>Servidor de Correo</h4>
+        <form action="#">
+          <div class="row">
+            <div class="col-md-4">
+              <h4>Tipo envio: Amazon</h4>
+            </div>
+          </div>
+          <div class="row" style="background: none">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userEmi">Usuario: </label>
+                <input
+                  type="email"
+                  id="user1Amazon"
+                  class="input form-control"
+                  name="emailCli"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="passEmi">Clave: </label>
+                <input
+                  type="password"
+                  id="passAmazon"
+                  class="input form-control"
+                  name="telCli"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="row" style="background: none">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="correoEmi">Nombre del emisor: </label>
+                <input
+                  type="text"
+                  id="correoAmazon"
+                  class="input form-control"
+                  name="nombreCli"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="servEmi">Servidor SMTP: </label>
+                <input
+                  type="text"
+                  id="servAmazon"
+                  class="input form-control"
+                  name="idCli"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row" style="background: none">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="puertoEmi">Puerto: </label>
+                <input
+                  type="number"
+                  id="portAmazon"
+                  class="input form-control"
+                  name="emailCli"
+                />
+              </div>
+            </div>
+            <div
+              class="col-md-6"
+              style="display: flex; align-items: center"
+            >
+              <input
+                type="checkbox"
+                id="cbox1Amazon"
+                class="cbox"
+                name="cbox"
+                value=""
+                style="margin-right: 10px"
+              />
+              <label for="cbox">Habilitar/Deshabilitar SSL</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <input type="email" class="form-control" id="correoTestAmazon" placeholder="Ingrese un correo de prueba..." />
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-primary" id="btnTestCorreoAmazon">Probar correo</button>
+            </div>
+          </div>
+        </form>
+
+        <hr />
+
+        <h4>Acuse de Recibo en Email Documentos Emitidos</h4>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="">Acuse de recibo:</label>
+            <input type="checkbox" id="cbox2Amazon" class="cbox" id="" value="" disabled />
+          </div>
+          <div class="col-md-8">
+            <label for="">Reenviar email cada:</label>
+            <input type="number" id="" value="100" disabled />
+            <b>dia/s</b>
+          </div>
+        </div>
+
+        <hr />
+
+        <h4>Link Adicionales en Email Documentos Emitidos</h4>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="">Link de pago online:</label>
+            <input type="checkbox" id="cbox3Amazon" class="cbox" id="" value="" />
+          </div>
+          <div class="col-md-12">
+            <label for="">Link de acepta/rechaza documento:</label>
+            <input type="checkbox" id="cbox4Amazon" class="cbox" id="" value="" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button
+          type="button"
+          id="btnEditCorreoEmiAmazon"
+          class="btn btn-primary"
+          data-dismiss="modal"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+  
+<!-- Modal mantenimiento correo Recepcion -->
+  <div
+  class="modal fade"
+  id="mantCorreoRecepcion"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Mantenimiento Correo Recepcion
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#">
+          <div class="row" style="background: none">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userEmi">Correo: </label>
+                <input
+                  type="email"
+                  id="correoRec"
+                  class="input-rec form-control"
+                  name="emailCli"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="passEmi">Clave: </label>
+                <input
+                  type="password"
+                  id="passRec"
+                  class="input-rec form-control"
+                  name="telCli"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="row" style="background: none">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="correoEmi">Puerto: </label>
+                <input
+                  type="text"
+                  id="portRec"
+                  class="input-rec form-control"
+                  name="nombreCli"
+                  disabled
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="servEmi">Servidor: </label>
+                <input
+                  type="text"
+                  id="servRec"
+                  class="input-rec form-control"
+                  name="idCli"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row" style="background: none">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="puertoEmi">ID: </label>
+                <input
+                  type="text"
+                  id="idServidorRec"
+                  class="input-rec form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <!-- <div
+              class="col-md-6"
+              style="display: flex; align-items: center"
+            >
+              <input
+                type="checkbox"
+                id="cbox1"
+                class="cbox"
+                name="cbox"
+                value=""
+                style="margin-right: 10px"
+              />
+              <label for="cbox">Habilitar/Deshabilitar SSL</label>
+            </div> -->
+            <div
+              class="col-md-6"
+              style="display: flex; align-items: center"
+            >
+              <button class="btn btn-primary" id="testCorreoRec">Probar correo</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="puertoEmi">Estado: </label>
+                <input
+                  type="text"
+                  id="estadoRec"
+                  class="input-rec form-control"
+                  disabled
+                />
+              </div>
+            </div>
+            <div
+                  class="col-md-6"
+                  style="display: flex; align-items: center"
+                >
+                  <input
+                    type="checkbox"
+                    id="cbox1Rec"
+                    class="cbox"
+                    name="cbox"
+                    value=""
+                    style="margin-right: 10px"
+                    disabled
+                  />
+                  <label for="cbox">Habilitar/Deshabilitar SSL</label>
+                </div>
+          </div>
+        </form>
+
+        <hr />
+
+        <h4>Acuse de Recibo en Email Documentos Emitidos</h4>
+        <div class="row">
+          <div class="col-md-8">
+            <label for="">Activar/Desactivar certificado de validación:</label>
+            <input type="checkbox" id="cbox2Rec" class="cbox" id="" value="" disabled />
+          </div>
+        </div>
+
+        <hr />
+
+        <h4>Guardar Adjunto</h4>
+        <div class="row">
+          <div class="col-md-8">
+            <label for="">Guardar adjunto:</label>
+            <input type="checkbox" id="cbox3Rec" class="cbox" id="" value="" disabled />
+          </div>
+        </div>
+
+        <!-- <hr /> -->
+
+        <!-- <h4>Link Adicionales en Email Documentos Emitidos</h4>
+        <div class="row">
+          <div class="col-md-12">
+            <label for="">Link de pago online:</label>
+            <input type="checkbox" id="cbox3" class="cbox" id="" value="" />
+          </div>
+          <div class="col-md-12">
+            <label for="">Link de acepta/rechaza documento:</label>
+            <input type="checkbox" id="cbox4" class="cbox" id="" value="" />
+          </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="btnEditCorreoRec"
+          data-dismiss="modal"
+          data-toggle="modal"
+          data-target="#editCorreoEmisionSuccess"
+        >
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="iframe">
+      <div class="data">
+        <div class="bx data1">
+          <div>
+            <i class="icon-clientes"></i>
+            <span>Clientes</span>
+          </div>
+          <span id="totalCliRes"></span>
+        </div>
+        <div class="bx data2">
+          <div>
+            <i class="icon-proveedores"></i>
+            <span>Proveedores</span>
+          </div>
+          <span id="totalProvRes"></span>
+        </div>
+        <div class="bx data3">
+          <div>
+            <i class="icon-facturasEmitidad"></i>
+            <span>Facturas Emitidas Hoy</span>
+          </div>
+          <span id="totalFactEmi"></span>
+        </div>
+      </div>
+
+      <div class="graphics-section">
+        <div class="graphics-grid">
+          <div class="gr1" id="chart"></div>
+          <div class="gr2" id="chart2">
+            <div class="title-chart" style="width: 100%; padding: 0 35px; text-align: center; margin-bottom: 15px;">
+              <h4>Estados: Envío de correo electrónico</h4>
+            </div>
+          </div>
+        </div>
+        <div class="graphic-button">
+          <button
+            class="btn btn-primary"
+            style="background-color: #2797d2; border: none"
+          >
+            Consultar datos historicos <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="reso-dev-section">
+        <div class="cards-grid">
+          <div class="gr1 cards-gr1">
+            <div class="cards-gr1__title">
+              <h6>Mis Recursos</h6>
+            </div>
+            <div class="cards-gr1__body">
+              <div class="row row1">
+                <div>
+                  <span>
+                    Vigencia de <strong>Mi Certificado Digital</strong> hasta:
+                  </span>
+                </div>
+                <div>
+                  <div>
+                    <span id="fechaCaducidad"></span>
+                  </div>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic outlined example"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm"
+                    >
+                      <i class="icon-addRecurso"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      style="background-color: #2797d2"
+                    >
+                      <i class="icon-actualizar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row row2">
+                <div>
+                  <span>Correo para emitir documentos electronicos:</span>
+                </div>
+                <div>
+                  <span id="correoEmision"></span>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic outlined example"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm"
+                      data-toggle="modal"
+                      id="btnMantCorreoEmi"
+                      data-target="#mantCorreoEmisionSMTP"
+                    >
+                      <i class="icon-addRecurso"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      style="background-color: #2797d2"
+                    >
+                      <i class="icon-actualizar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row row3">
+                <div>
+                  <span>Correo para recibir documentos electronicos:</span>
+                </div>
+                <div>
+                  <span id="correoRecepcion"></span>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic outlined example"
+                  >
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary btn-sm"
+                      data-toggle="modal"
+                      data-target="#mantCorreoRecepcion"
+                    >
+                      <i class="icon-addRecurso"></i>
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      style="background-color: #2797d2"
+                    >
+                      <i class="icon-actualizar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gr2 cards-gr2">
+            <div class="cards-gr2__title">
+              <h6>Soy Desarrollador</h6>
+            </div>
+            <div class="cards-gr2__copy">
+              <p>
+                Integre sus aplicaciones con nuestros servicios y automatice sus
+                procesos.
+              </p>
+              <p>
+                eDoc Empresarial dispone de una gran variedad de API's para que
+                integres cualquier plataforma de manera fácil y rápida, para
+                autenticar cada método, deberás autenticarte primero enviando
+                estos 2 parámetros:
+              </p>
+            </div>
+            <div class="cards-gr2-inputs">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="exampleFormControlInput1"
+                  placeholder="Nombre_Usuario"
+                />
+              </div>
+              <div class="input-group mb-3 input-group-sm">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="API_Key"
+                  aria-label="Recipient's username"
+                  aria-describedby="button-addon2"
+                />
+                <div class="input-group-append">
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    style="background-color: #2797d2; color: #fff"
+                    id="button-addon2"
+                  >
+                    <span class="icon-enviarMail"></span>
+                  </button>
+                </div>
+              </div>
+              <div class="mb-3">
+                <button
+                  class="btn btn-primary btn-sm"
+                  style="background-color: #2797d2; border: none"
+                >
+                  Renovar mis credenciales API
+                </button>
+              </div>
+              <div class="mb-3" style="text-align: center">
+                <a
+                  href="#"
+                  style="text-decoration: underline; font-style: italic"
+                  >Consultar manual de integracon API</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script src="../assets/js/main.js" type="module"></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../assets/js/bootstrap4.min.js"></script>
+    <script src="js/home-page.js" type="module"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </body>
+</html>

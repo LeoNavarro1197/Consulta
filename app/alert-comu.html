@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!-- <link rel="stylesheet" href="css/homepage-style.css" /> -->
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/css/icons_portalConsulta-v1.0/icons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <!-- Bootstrap -->
+    <!-- <link rel="stylesheet" href="../assets/css/bootstrap.min.css" /> -->
+
+    <!-- <link rel="stylesheet" href="css/alert-comu-style.css" /> -->
+    <link rel="stylesheet" href="../assets/css/tagsly.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="assets/css/icons.css" />
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/tagsly.js"></script>
+    
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="contenedorProfile"></div>
+    <div class="content">
+      <section class="section alert-section">
+        <div class="box">
+          <div class="box-head">
+            <h1>Alertas</h1>
+          </div>
+          <div class="box-body">
+            <div class="div">
+              <label for="fin-input">Contacto Financiero/Contrato</label>
+              <input type="email" id="fin-input" />
+              <span
+                ><i class="icon-verificado"></i> Contacto administrativo para
+                gestion de temas relacionados con contrato, cartera,
+                vencimientos de certificados digitales.</span
+              >
+            </div>
+            <div class="div">
+              <label for="tec-input">Contacto Técnico</label>
+              <input type="email" id="tec-input" />
+              <span
+                ><i class="icon-verificado"></i> Contacto para notificar errores
+                con la cuenta, ventana de mantenimientos, cambios
+                regulatorios.</span
+              >
+            </div>
+            <div class="div">
+              <label for="alert-input">Contacto Alertas</label>
+              <input type="email" id="alert-input" />
+              <span
+                ><i class="icon-verificado"></i> Notificaciones de comunicados
+                generales.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div
+          class="alert alert-success alert-dismissible fade"
+          id="alert"
+          role="alert"
+        >
+          El correo se ha guardado satisfactoriamente!
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </section>
+      <section class="section comu-section" style="margin-top: 35px">
+        <div class="box">
+          <div class="box-head">
+            <h1>Comunicados</h1>
+          </div>
+          <div class="box-body">
+            <table class="table table-hover table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">PDF</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Descripción</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <tr>
+                  <td>
+                    <button class="btn btn-danger btn-sm">
+                      <span class="icon-pdf"></span>
+                    </button>
+                  </td>
+                  <td>0001-01-01T00:00:00</td>
+                  <td>Comunicado de prueba 1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/bootstrap4.min.js"></script>
+    <script src="js/alert-comu.js" type="module"></script>
+  </body>
+</html>

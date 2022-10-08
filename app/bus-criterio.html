@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <!-- CSS only -->
+    <link rel="stylesheet" href="css/bus-criterio-style.css" />
+    <link rel="stylesheet" href="../assets/datatables/datatables.min.css" />
+    <link rel="stylesheet" href="../assets/datatables/datatablesgs.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="../assets/css/icons_portalConsulta-v1.0/icons.css"
+    />
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
+    <title>Busqueda por Criterio</title>
+
+    <style>
+      .centrarContenido{
+        text-align: center; 
+        justify-content: center; 
+        align-items: center; 
+        border-radius: 20px; 
+        background: rgb(235, 235, 235); 
+        padding: 0px; margin: 0px;
+    }
+
+    .estiloCuerpoModal{
+        background: rgb(235, 235, 235); 
+        border-radius: 0px 0px 20px 20px; 
+        width: 100%;
+    }
+    </style>
+
+  </head>
+  <body>
+    <!--------------------------------visualizar pdf----------------------------------------->
+    <div
+      class="modal fade"
+      id="modalPdf"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <!--x y cabezal-->
+      <div
+        role="document"
+        class="modal-dialog modal-lg"
+        style="padding-top: 30px"
+      >
+        <div class="modal-content centrarContenido">
+          <div class="modal-header sinBorde">
+            <h5 class="modal-title estiloTitulo" id="exampleModalLabel">PDF</h5>
+          </div>
+          <!--contenido modal-->
+          <div class="modal-body estiloCuerpoModal">
+            <div>
+              <div id="spinnerPdf" class="spinner-border text-primary" role="status" style="margin-top: 150px;">
+                <!-- <span class="sr-only">Loading...</span> -->
+            </div>
+              <div
+                id="PdfModal"
+                style="height: 400px; padding-top: 0px; padding-bottom: 10px"
+              >
+              <iframe id='framePDF' runat='server' frameborder='0' scrolling='auto' src ='' type = 'application/pdf' style = 'width:100%; height:100%'></iframe >
+              </div>
+              <div class="estiloBoton">
+                <button
+                  data-toggle="modal"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  class="btn btn-primary estiloEspacioBoton"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Inputs -->
+      <div class="inputs-box">
+        <div class="box box-1">
+          <div>
+            <select
+              class="custom-select"
+              id="slcCriBusqueda"
+              aria-label="Default select example"
+            >
+              <option value="0">Seleccione criterio de busqueda</option>
+              <option value="1">Numero de documento</option>
+              <option value="2">CUFE</option>
+            </select>
+            <!-- <select
+              class="custom-select"
+              id="slcDescripcion"
+              aria-label="Default select example"
+            ></select> -->
+            <input type="text" class="form-control" id="descripcion" />
+          </div>
+          <div>
+            <button
+              class="btn btn-primary"
+              id="btnBuscar"
+              style="background-color: #2797d2"
+            >
+              <i class="icon-buscar"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Table -->
+      <div class="table-box" style="background: unset;">
+        <div class="tabla" style="background: unset;">
+          <div class="table-responsive" style="background: unset;">
+            <table
+              id="tb"
+              class="
+                table3
+                table table-hover table-sm
+                display
+                compact
+                cell-border
+              "
+              style="border-radius: 10px; background: unset;"
+            ></table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/datatables/datatables.min.js"></script>
+    <!-- <script src="../assets/datatables/datatablegs.js"></script> -->
+    <script src="../assets/js/bootstrap4.min.js"></script>
+    <script src="../assets/js/moment.js"></script>
+    <script src="../assets/js/moment-locale-es.js"></script>
+    <!--ventanas emergentes-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/bus-criterio.js" type="module"></script>
+    <script src="../assets/js/main.js" type="module"></script>
+  </body>
+</html>

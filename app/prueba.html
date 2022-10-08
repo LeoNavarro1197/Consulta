@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Test jstree ajax</title>
+  <link href="style.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/css/uikit.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/css/uikit.almost-flat.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/css/uikit.gradient.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <style>
+        #node {
+            max-height: 100px;
+            overflow: auto;
+        }
+    </style>
+
+  <div class="uk-container uk-grid">
+    <div class="uk-width-1-1">
+      <p>Something <strong>amazing</strong> with the web!
+        <a class="uk-button uk-button-primary" id="showSweet">
+          <i class="fa fa-spin fa-cog"></i> Sweet
+        </a>
+      </p>
+    </div>
+    <div class="uk-width-1-1">
+      <a class="uk-button" id="ajaxData">
+        <i class="fa fa-cog" id="showLoading"></i> Get data
+      </a>
+      <pre id="node" class="uk-panel uk-panel-box uk-panel-box-primary"></pre>
+      <div id="jstree" class="uk-panel uk-panel-box"></div>
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.0/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.22.0/js/uikit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <script src="/app/js/prueba2.js"></script>
+</body>
+
+</html>

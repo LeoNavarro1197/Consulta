@@ -1,0 +1,19 @@
+{
+	"api_url": {
+		"api_auth": {
+			"url": "https://devreg5.guru-soft.com/EdocPanama/4.5/EdocConsulta/Api/Authentication/Autenticar/",
+			"methods": {
+				"auth": "ServicioEDOC"
+			}
+		},
+		"api_administration": {
+			"url": "https://devreg5.guru-soft.com/EdocPanama/4.5/EdocConsulta/Api/Administration/Administracion/"
+		},
+		"api_security": {
+			"url": "https://devreg5.guru-soft.com/EdocPanama/4.5/EdocConsulta/Api/Security/Seguridad/"
+		},
+		"api_emision": {
+			"url": "https://devreg5.guru-soft.com/EdocPanama/4.5/EdocConsulta/Api/Emision/Emision/"
+		}
+	}
+}

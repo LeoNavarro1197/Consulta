@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,300;1,500;1,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  background: #f2f2f2;
+}
+
+.sorting_1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sorting_1 > button {
+  background: none;
+}
+
+body {
+  padding-top: 25px;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 20px 0;
+}
+
+.inputs-box {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.inputs-box .box {
+  padding: 0 15px;
+}
+
+.inputs-box .box-1 {
+  width: 100%;
+  display: flex;
+  margin-bottom: 15px;
+  gap: 1em;
+}
+
+.inputs-box .box-1 div:first-child {
+  display: flex;
+  flex: 7 1 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+.inputs-box .box-1 div:last-child {
+  flex: 1 1 auto;
+}
+
+.inputs-box .box-1 div:last-child button {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.inputs-box .box-1 div {
+  flex: 1 1 auto;
+}
+
+.inputs-box .box-2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.inputs-box .box-2 .input-group {
+  width: 47%;
+}
+
+/* Table */
+.focusNone:focus{
+  outline: none;
+  outline-offset: 0;
+}
+
+table tbody tr {
+  height: 50px;
+}
+
+table tbody tr span {
+  font-size: 1.6em;
+}
+
+table tbody tr .icon-pdf {
+  color: red;
+}
+
+table tbody tr .icon-xml {
+   color: blue;
+}
+
+table tbody tr .icon-descargar {
+  color: green;
+}
+
+table td,
+table th {
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+table td:first-child,
+table th:first-child  {
+  border-left: none;
+}
+
+table td:last-child,
+table th:last-child  {
+  border-right: none;
+}
+
+.dataTables_wrapper .row {
+  background: none;
+}

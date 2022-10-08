@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script src="datetimepicker/jquery-3.3.1.min.js"></script>     -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- datatable -->
+    <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="css/dataTables.css">
+    <script src="dataTable/datatablegs (1).js"></script>
+
+    <!-- <link href="datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet"> -->
+        
+    <link rel="stylesheet" href="css/monitorMail.css">
+    <link rel="stylesheet" href="css/verHistorialDeEventos.css">
+    <link rel="stylesheet" href="css/modalEstilos.css">
+    <link rel="stylesheet" href="../assets/css/icons_portalConsulta-v1.0/icons.css">
+    <link rel="stylesheet" href="css/dataTables.css">
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script src="libreria-ajax/jquery.min.js" type="text/javascript"></script>
+
+
+    <title>MonitorMail</title>
+</head>
+
+<body>
+    
+<main>
+
+    <!-- <div>
+        <p style="color: #24356b; font-weight: bold; font-size: 30px; padding-left: 35px; padding-top: 10px; margin: 0;"><em>Monitor Mail</em></p>
+    </div> -->
+
+    <!--------------------------------------Ver historial de eventos--------------------------------------------->
+    <!-- Modal -->
+    <div class="modal fade" id="verhistorialdeeventos" tabindex="-1" aria-labelledby="exampleModalLabel"  
+        aria-hidden="true">
+    
+        <!--X, cabezal y tamaño-->
+        <div role="document" class="modal-dialog modal-lg">
+            <div class="modal-content contenidoEventos">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title tituloEventos" id="exampleModalLabel">Historial de eventos de documentos eléctronicos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body cuerpoEventos">
+                    <div>
+                        <div class="contenedorHistorialEventos">
+                            <!--espacio1-->
+                            <div class="espacio1 espacio1Eventos">
+                                <table class="tabla2 table table-sm table-borderless espacio1TablaEventos">
+                                    <tbody class="cuerpoTabla">
+                                      <tr>
+                                        <td class="espacio2td1">Autorizadas</td>
+                                        <td class="espacio2td2">5</td>                            
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Rechazadas</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente envio</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente validación</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente validación</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio2td1">Pendiente validación</td>
+                                        <td class="espacio2td2">2</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <!--espacio2-->
+                            <div class="espacio2">
+                                <p class="espacio2-4Eventosp1">Fecha y hora registro eDoc:</p><br>
+                                <p class="espacio2-4Eventosp2">08/08/2021 - 01:00:00</p>
+                            </div>
+                            <!--espacio3-->
+                            <div class="espacio3 espacio3Eventos">
+                                <p class="espacio3Titulo">Validaciones:</p>
+                                <table class="tabla2 table table-sm table-borderless table-striped espacio3Tabla">
+                                    <tbody class="espacio3Cuerpo">
+                                      <tr>
+                                        <td class="espacio3td1">Autorizadas</td>
+                                        <td class="espacio3td2">5</td>                            
+                                      </tr>
+                                      <tr>
+                                        <td class="espacio3td1-1">Rechazadas</td>
+                                        <td class="espacio3td2">2</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="espacio3td1">Pendiente envio</td>
+                                        <td class="espacio3td2">2</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="espacio3td1-1">Pendiente validación</td>
+                                        <td class="espacio3td2">2</td>
+                                      </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--espacio4-->
+                            <div class="espacio4">
+                                <p class="espacio2-4Eventosp1">Fecha y hora registro eDoc:</p><br>
+                                <p class="espacio2-4Eventosp2">08/08/2021 - 01:00:00</p>
+                            </div>
+                            <!--espacio5-->
+                            <div class="espacio5">
+                                <table class="table4 table table-sm table-striped table-borderless">
+                                    <thead>  
+                                        <tr>
+                                            <th data-field="accion" class="espacio5thead" scope="col">Acción</th>
+                                            <th data-field="estado" class="espacio5thead" scope="col">Estado</th>
+                                            <th data-field="noedoc" class="espacio5thead" scope="col">No. Doc</th>
+                                        </tr>
+                                    </thead>
+                                    <tr>
+                                        <th scope="row" class="tablarow1">
+                                            <div class="tabladiv">1</div>
+                                        </th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                        <td class="bordes1"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="tabladiv">2</th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="bordes2">3</th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                        <td class="bordes1"></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" class="tabladiv">4</th>
+                                        <td class="tablatd">uno</td>
+                                        <td class="tablatd">dos</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="espacio6">
+                                <div class="btn btn-primary espacio6btn1" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#verhistorialdeeventos2">Ver línea de tiempo</div>
+                                <div class="btn btn-primary espacio6btn2" data-toggle="modal" data-dismiss="modal" aria-label="Close">Cerrar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------------Ver historial de eventos 2--------------------------------------------->
+    <!-- Modal -->
+    <div class="modal fade" id="verhistorialdeeventos2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+        <!--X, cabezal y tamaño-->
+        <div role="document" class="modal-dialog modal-lg" >
+            <div class="modal-content contenidoEventos">
+                <div class="modal-header sinBorde">
+                    <h5 class="modal-title tituloEventos" id="exampleModalLabel">Historial de eventos de documentos eléctronicos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--Boton Buscar cliente-->
+                <div class="modal-body cuerpoEventos">
+                    <div>
+                        <div class="contenedorHistorialEventos2">
+                            <!--espacio1-1-->
+                            <div class="espacio1-1 espacio1Eventos">
+                                <table class="tabla2 table table-sm table-borderless espacio1TablaEventos">
+                                    <tbody class="cuerpoTabla">
+                                      <tr>
+                                        <td class="espacio1-1td1">Autorizadas</td>
+                                        <td class="espacio1-1td2">5</td>                            
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Rechazadas</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente envio</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente validación</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente validación</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                      <tr class="lineaHorizontal2">
+                                        <td class="espacio1-1td1">Pendiente validación</td>
+                                        <td class="espacio1-1td2">2</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <!--espacio2-1-->
+                            <div class="espacio2-1">
+                                <ul class="timeline">
+                                    <li>
+                                        <p style="padding-left: 25px;">Lorem ipsum dolor sit amet</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Curabitur purus sem, malesuada eu luctus eget</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                    <li>
+                                        <p style="padding-left: 25px;">Fusce ullamcorper ligula sit amet quam accumsan aliquet.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--espacio3-1-->
+                            <div class="espacio3-1">
+                                <div class="btn btn-primary espacio6btn1" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#verhistorialdeeventos">Ver por módulos</div>
+                                <div class="btn btn-primary espacio6btn2" data-toggle="modal" data-dismiss="modal" aria-label="Close">Cerrar</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------contenido----------------------------------------->
+
+    <div id="cuerpoPrincipal" class="margenIzquierda contenedorestilo">
+        <div class="contenedor">
+            <div class="contenido">
+                <div class="slot1">
+                    <span class="icon-mailEnviados contenedorslot1"></span>
+                    <p class="contenedorslot1p">
+                        <a class="contenedorslot1pa" id="mailsEnviadosHoy">0</a><br>Total<br>de mails</p>
+                </div>
+                <div class="slot2">
+                    <table class="tabla2 table table-sm table-borderless contenedorslot2tabla">
+                        <tbody class="contenedorslot2tablab">
+                          <tr class="contenidoslot2tablatr">
+                            <td >Total enviado sin errores</td>
+                            <td class="contenidoslot2tablatd" id="enviadoSinErrores">0</td>                            
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr" >
+                            <td >Total enviado parcialmente</td>
+                            <td class="contenidoslot2tablatd" id="enviadoParcialmente">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr" >
+                            <td >Total en cola de envío</td>
+                            <td class="contenidoslot2tablatd" id="enColaDeEnvio">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenidoslot2tablatr" >
+                            <td >Total no enviado</td>
+                            <td class="contenidoslot2tablatd" id="noEnviado">0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                
+                </div>
+                <div class="slot3">
+                    <table class="tabla2 table table-borderless contenedorslot3">
+                        <tbody class="contenedorslot3b">
+                          <tr>
+                            <td><span class="icon-sms contenedorslot3td2"></span>
+                                SMS</td>
+                            <td class="contenedorslot3td">0</td>
+                          </tr>
+                          <tr class="lineaHorizontal2 contenedorslot3tr">
+                            <td><span class="icon-whatsapp contenedorslot3td2"></span>
+                                WhatsApp</td>
+                            <td class="contenedorslot3td">0</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+            <!--------------------------------Buscar----------------------------------------->
+
+            <div class="buscarestilo colorPlace">
+                <input id="clienteSeleccionadoMail" type="search" class="buscarmasselecbtnprincipal" data-toggle="modal" data-dismiss="modal" 
+                    aria-label="Close" placeholder="Búsqueda cliente" data-target="#exampleModalBuscarCliente" readonly>
+                    <button id="clickMailX" type="button" class="btn btn-primary buscartablaestilobtn1">
+                        <span class="icon-close buscartablaestilospan2"></span>
+                    </button>
+                </input>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalBuscarCliente" tabindex="-1" aria-labelledby="exampleModalLabel"   
+                aria-hidden="true" style="background: transparent;">
+            
+                <!--x y cabezal-->
+                <div role="document" class="modal-dialog buscarcabezal">
+                    <div class="modal-content buscarcontenido">
+                        <div class="modal-header sinBorde">
+                            <h5 class="modal-title buscartitulo" id="exampleModalLabel">Búsqueda cliente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <!--Boton Buscar cliente-->
+                        <div class="modal-body buscarcuerpo">
+                            <div class="buscarcuerpodiv">
+                                <button id="llenarTableBuscarCliente" type="button" class="buscarcuerpobtn" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#exampleModalBuscarClienteTabla">
+                                   Nombre o razón social
+                                </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#exampleModalBuscarClienteTabla" 
+                                    style="border-radius: 0px 10px 10px 0px; background: #2797d2; border: none;">
+                                    <span class="icon-buscar buscarcuerpobtn2span"></span>
+                                </button>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-----------------------------adentro------------------------------->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalBuscarClienteTabla" tabindex="-1" aria-labelledby="exampleModalLabel"   
+            aria-hidden="true" style="background: transparent;">
+            
+            <div role="document" class="modal-dialog modal-lg buscaradentrodialog" style="padding-top: 10px;">
+                <div class="modal-content buscaradentrocontent" style="height: 560px;">
+                    <div class="modal-header sinBorde">
+                        <h5 class="modal-title buscaradentrotitulo" id="exampleModalLabel">Búsqueda cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="buscaradentrocuerpo">
+                            <input id="buscarMail" class="focusNone buscaradentroinput" type="text" placeholder="No. Identificación">
+                            <button id="seleccionarClienteMailSelect" type="button" class="btn btn-primary buscaradentroinputbtn" data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#buscarseleccionar">
+                                <span class="icon-buscar buscaradentroinputbtnspan"></span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="administrartabla" style="padding-bottom: 20px;">
+                        <section class="table-responsive modalOrden" style="padding: 10px">
+                            <table id="tablaBuscarClientesMail" class="table is-striped table-hover table-sm display compact cell-border">
+                                
+                            </table>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--------------------------------Buscar + boton seleccionar----------------------------------------->
+
+        <!-- Modal -->
+        <div class="modal fade" id="buscarseleccionar" tabindex="-1" aria-labelledby="exampleModalLabel"   
+            aria-hidden="true" style="background: transparent;">
+        
+            <!--x y cabezal-->
+            <div role="document" class="modal-dialog buscarmasselecdialog">
+                <div class="modal-content buscarmasseleccontent">
+                    <div class="modal-header sinBorde">
+                        <h5 class="modal-title buscarmasselectitulo" id="exampleModalLabel">Búsqueda cliente</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!--Boton Buscar cliente-->
+                    <div class="modal-body" style="background: rgb(235, 235, 235); border-radius: 0px 0px 20px 20px;">
+                        <div class="buscarmasselecdiv">
+                            <input id="seleccionarClienteMail" class="buscarmasselecbtn1" data-toggle="modal" data-dismiss="modal" 
+                                aria-label="Close" data-target="#exampleModalBuscarClienteTabla" readonly>
+                            </input>
+                            <button type="button" class="btn btn-primary buscarmasselecbtn2" data-toggle="modal" data-dismiss="modal" 
+                                aria-label="Close" data-target="#exampleModalBuscarClienteTabla">
+                                <span class="icon-buscar buscarmasselecbtn2span"></span>
+                            </button>
+                        </div>  
+                    </div>
+                    <div class="buscarmasselecespacio">
+                        <button id="clienteSeleccionadoMailSelect" class="btn btn-primary"data-toggle="modal" data-dismiss="modal" 
+                            aria-label="Close" style="border-radius: 10px; background: #2797d2;
+                                border: none;">Seleccionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!--------------------------------Buscar----------------------------------------->
+
+            <div class="buscar" style="background: rgb(235, 235, 235); display: grid; grid-column: span 1;">
+                <select name="Operacion" id="opciones1" 
+                    style="width: 100%; height: 35px; border-radius: 10px; color: #c4c4c4; border: none; font-size: 13px; padding-left: 10px;">
+                        <option class="dropdown-item buscar2menua" value="21" selected href="#">Todos los tipos de mail</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="0" href="#">Cliente Recuperar Clave</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="1" href="#">Emision Documento Emitido</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="2" href="#">Cliente Bienvenida</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="3" href="#">Emision Mail Responsable</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="4" href="#">Recepcion Auto Response</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="5" href="#">Recepcion Asignacion</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="6" href="#">Recepcion Validacion</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="7" href="#">Recepcion Expiro Dia</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="8" href="#">Recepcion Mail Responsable</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="9" href="#">Recepcion Mail Responsable Error</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="10" href="#">Recepcion Otros Adjunto</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="11" href="#">Recepcion Sin Adjunto</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="12" href="#">Compania Recuperar Clave</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="13" href="#">Compania Bienvenida</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="14" href="#">Emision Documento Procesamiento</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="15" href="#">Emision Documento Procesamiento</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="16" href="#">Emision Notificar Correo Erroneo</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="17" href="#">Emision Notificar Elimina Adjunto</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="18" href="#">Compania Alerta Certificado</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="19" href="#">Compania Metricas Diarias</option>
+                        <div class="lineaHorizontal buscar2menudiv"></div>
+                        <option class="dropdown-item buscar2menua" value="20" href="#">Recepcion Notifica Comercial</option>
+                </select>
+            </div>
+
+            <!--------------------------------Buscar----------------------------------------->
+
+            <div class="buscar" style="background: rgb(235, 235, 235); display: grid; grid-column: span 1;">
+                <select name="Operacion" id="opciones2" 
+                    style="width: 100%; height: 35px; border-radius: 10px; color: #c4c4c4; border: none; font-size: 13px; padding-left: 10px;">
+                        
+                </select>
+            </div>
+
+            <!--------------------------------Fecha----------------------------------------->
+
+            <div class="fecha" style="display: flex; grid-column: span 1; background: rgb(235, 235, 235);">
+                <div class="fecha2div">
+                    <input type="date" name="fecha" id="fechaDesde" placeholder="Fecha desde" class="form-control fechaGeneral">
+                </div>
+                <div class="fecha2div">
+                    <input type="date" name="fecha" id="fechaHasta" placeholder="Fecha hasta" class="form-control fechaGeneral">
+                </div>
+            </div>
+
+                <div class="fecha" style="display: flex; grid-column: span 2; background: rgb(235, 235, 235);">
+
+                    <!-- Button trigger modal -->
+                        <button id="btnConsultar" type="button" class="btn btn-primary buscartablaestilobtn" data-toggle="modal" data-target="#exampleModal" style="border-radius: 10px; display: initial;">
+                            <span class="icon-buscar fecha2divspan"></span>
+                        </button>
+                        <!-- <button id="btnGris" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#antesde" style="border-radius: 10px; display: initial;">
+                            <span class="icon-buscar fecha2divspan"></span>
+                        </button> -->
+
+                </div>
+
+                <!-- <button type='button' class='btn btn-lg btn-danger' data-toggle='popover' title='Popover title' data-content='And heres some amazing content. It very engaging. Right?'>Click to toggle popover</button> -->
+
+                <!--------------------------------modal Antes de ---------------------------->
+
+                <div class="modal fade" id="antesde" tabindex="-1" aria-labelledby="exampleModalLabel"   
+                aria-hidden="true" style="background: transparent;">
+
+                <!--x y cabezal-->
+                <div role="document" class="modal-dialog modal-lg espacioCabezal">
+                    <div class="modal-content centrarContenido">
+                        <div class="modal-header sinBorde">
+                            <h5 class="modal-title estiloTitulo" id="exampleModalLabel">
+                                Antes de buscar, verifica que "Tipos de mail" y "Estados de mail" contengan algún parámetro</h5>
+                        </div>
+
+                        <!--Boton Buscar cliente-->
+                        <div class="modal-body estiloCuerpoModal">
+                            <div>
+                                <div class="estiloBoton">
+                                    <button data-toggle="modal" data-dismiss="modal" aria-label="Close" data-target="#correoenviadoexitosamente" 
+                                        class="btn btn-primary estiloEspacioBoton">Aceptar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <!--------------------------------Buscar Tabla----------------------------------------->
+
+                <!-- <div class="buscarTabla buscartablaestilo" style="background: rgb(235, 235, 235);"> -->
+                    <!-- Button trigger modal -->
+                    <!-- <button type="button" class="btn btn-primary buscartablaestilobtn">
+                        <span class="icon-descargaXls buscartablaestilospan"></span>
+                    </button> -->
+
+                    <!--buscar tabla-->
+
+                    <!-- <form style="display: flex; background: rgb(235, 235, 235);">
+                        <input type="text" placeholder="Buscar"style="border-radius: 10px 0 0 10px; background: #fff; color: rgba(179, 179, 179, 0.815); border: none; font-size: 13px; width: 300px; text-align: left; padding: 8px 5px 8px 15px;">
+                        <button type="button" class="btn btn-primary buscartablaestilobtn1">
+                            <span class="icon-buscar buscartablaestilospan2"></span>
+                        </button>
+                    </form>
+
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle buscartablaestilobtn2" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Mostrar 5
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Cinco</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Diez</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Quince</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Veinte</a>
+                            <a class="dropdown-item buscartablaestiloitem" href="#">Todos</a>
+                            
+                        </div>
+                      </div>
+                </div> -->
+
+            <!--------------------------------Tabla----------------------------------------->
+
+            <!-- <div id="tablaPrimaria" class="tabla div-datatable" style="padding: 20px;">
+                <div class="table-responsive table-wrapper">
+                    <table id="tablaMail" class="table is-striped table-hover table-sm display compact cell-border">
+                        
+                            
+                    </table>
+                </div>
+            </div> -->
+
+            <div id="tablaSecundaria" class="tabla div-datatable" style="padding: 20px;">
+                <div class="table-responsive table-wrapper">
+                    <table id="tablaMail2" class="table is-striped table-hover table-sm display compact cell-border">
+                            
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper js, then Bootstrap js -->
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" 
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script src="dataTable/datatablegs (1).js"></script>
+
+<!-- moment js -->
+<script src="moment/moment.js"></script>
+<script src="moment/moment-locale-es.js"></script>
+
+<!--datetimepicker-->
+<!-- <script src="datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="datetimepicker/scripts.js"></script> -->
+
+<script src="js/obtenerMailsPorParametros.js" type="module" charset="utf-8"></script>
+<script src="../assets/js/main.js" type="module"></script>
+
+</body>
+</html>

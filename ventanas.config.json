@@ -1,0 +1,37 @@
+{
+  "id_ventanas": {
+    "inicio": 100,
+    "monitor_general": 210,
+    "monitor_mail": 220,
+    "busqueda_x_criterio": 230,
+    "usuario_edoc_consulta": 410,
+    "usuario_edoc_cliente": 415,
+    "certificado_digital": 420,
+    "manuales_usuario": 430,
+    "alertas_comunicados": 440,
+    "logos_banner": 450
+  },
+  "acciones_user": {
+    "inicio_sesion": 1,
+    "recuperar_contraseña": 2,
+    "agregar": 3,
+    "editar": 4,
+    "eliminar": 5,
+    "cambiar_constraseña": 6,
+    "asignar_rol": 7,
+    "correo_bienvenida": 8,
+    "consulta": 9,
+    "descargar_xml": 10,
+    "descargar_pdf": 11,
+    "exportar_excel": 12,
+    "descargar_zip": 13,
+    "reenviar_correo_bienvenida": 14,
+    "reenviar_correo_documento_emitido": 15,
+    "cambiar_correo": 16
+  },
+  "tipo_archi_doc_emi": {
+    "xml": 1,
+    "pdf": 2,
+    "zip": 3
+  }
+}

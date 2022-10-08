@@ -1,0 +1,78 @@
+{
+	"api_methods": {
+		"api_auth": {
+			"methods": {
+				"auth": "ServicioEDOC",
+				"refresh_token": "RefreshToken"
+			}
+		},
+		"api_administration": {
+			"methods": {
+				"obt_total_clientes": "ObtenerTotalClientes",
+				"obt_total_proveedores": "ObtenerTotalProveedores",
+				"obt_total_correos_hoy": "ObtenerTotalCorreosHoy",
+				"obt_mis_recursos": "ObtenerMisRecursos",
+				"obt_certificado_dig": "ObtenerCertificadoDigital",
+				"guardar_certificado_dig": "GuardarCertificadoDigital",
+				"obt_com_por_id_com": "ObtenerComunicadoPorIdComunicado",
+				"obt_coms_x_id_dest_x_dest": "ObtenerComunicadosPorIdTipoDestinatarioPorDestinatario",
+				"obt_dgi": "ObtenerEstadoDGI",
+				"obt_contact_alert_com": "ObtenerContactosAlertaComunicado",
+				"obt_clientes": "ObtenerClientes",
+				"obt_clientes_x_params": "ObtenerClientesPorParametros",
+				"obt_mails_x_params": "ObtenerMailsPorParametros",
+				"obt_total_users_cli_conect_recien": "ObtenerTotalUsuariosClienteConectadosRecientemente",
+				"marc_leido_com_x_id_com_x_id_dest": "MarcarLeidoComunicadoPorIdComunicadoPorIdDestinatario",
+				"test_serv_correo_smtp": "TestServidorCorreoSMTP",
+				"test_serv_correo_pop3": "TestServidorCorreoPOP3",
+				"mant_serv_correo_emi": "MantenimientoServidorCorreoEmision",
+				"mant_serv_correo_rec": "MantenimientoServidorCorreoRecepcion",
+				"obt_serv_correo_emi": "ObtenerServidorCorreoEmision",
+				"obt_serv_correo_rec": "ObtenerServidorCorreoRecepcion",
+				"mant_noti_cli": "MantenimientoNotificacionCliente",
+				"obt_tipo_env_noti_plant": "ObtenerTiposEnvioNotificacionPlantilla",
+				"obt_noti_cli": "ObtenerNotificacionesCliente",
+				"obt_com_x_id_tipo_dest_x_dest": "ObtenerComunicadosPorIdTipoDestinatarioPorDestinatario",
+				"obt_total_noti_env_cli": "ObtenerTotalNotificacionesEnviadasClientes",
+				"guardar_contact_alert_com": "GuardarContactosAlertaComunicado",
+				"registrar_even_user_consul": "RegistrarEventoUsuarioConsulta",
+				"consul_config_inicial_edoc_consult": "ConsultarConfiguracionInicialEdocConsulta",
+				"obt_logo_ride": "ObtenerLogoRide",
+				"guardar_logo_ride": "GuardarLogoRide",
+				"obt_banner_ride": "ObtenerBannerRide",
+				"guardar_banner_ride": "GuardarBannerRide",
+				"obt_manu_x_id_tipo_dest_x_dest": "ObtenerManualesPorIdTipoDestinatarioPorDestinatario",
+				"obt_status_mail": "ObtenerEstadosMail"
+			}
+		},
+		"api_security": {
+			"methods": {
+				"obt_mis_datos_user": "ObtenerMisDatosUsuario",
+				"obt_total_users": "ObtenerTotalUsuarios",
+				"obt_histo_conex_x_id_user_consul": "ObtenerHistorialConexionPorIdUsuarioConsulta",
+				"obt_users_consul": "ObtenerUsuariosConsulta",
+				"obt_rols_user_consul_x_id_compania": "ObtenerRolesUsuarioConsultaPorIdCompania",
+				"obt_permi_x_id_rol_user_consul": "ObtenerPermisosPorIdRolUsuarioConsulta",
+				"obt_total_rols_user_consul": "ObtenerTotalRolesUsuarioConsulta",
+				"obt_total_users_consul_conect_recien": "ObtenerTotalUsuariosConsultaConectadosRecientemente",
+				"obt_total_users_consul": "ObtenerTotalUsuariosConsulta",
+				"mant_user_cli": "MantenimientoUsuarioCliente",
+				"man_rol_user_consul": "MantenimientoRolUsuarioConsulta",
+				"mant_user_consul": "MantenimientoUsuarioConsulta",
+				"obt_permi_activ_consul": "ObtenerPermisosActivosConsulta",
+				"obt_historial_event_user_consul": "ObtenerHistorialEventosUsuarioConsulta"
+			}
+		},
+		"api_emision": {
+			"methods": {
+				"total_docu_emi_hoy": "TotalDocumentosEmitidosHoy",
+				"obt_archivo_doc_emi_x_cufe": "ObtenerArchivoDocumentoEmisionPorCufe",
+				"obt_docs_x_id_comp_x_cri": "ObtenerDocumentosXIdCompaniaXCriterios",
+				"reenv_mail_doc_emi": "ReenvioMailDocumentoEmitido",
+				"obt_docs_x_id_comp_x_params": "ObtenerDocumentosXIdCompaniaXParametros",
+				"obt_status_emi": "ObtenerEstadosEmision",
+				"obt_tipos_emi": "ObtenerTiposDocumento"
+			}
+		}
+	}
+}

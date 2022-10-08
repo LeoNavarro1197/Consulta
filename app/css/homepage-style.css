@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #f2f2f2;
+}
+
+/* body {
+  padding-top: 25px;
+} */
+
+.apexcharts-legend {
+  text-align: left;
+}
+
+.pass-icon {
+  margin-left: 287px;
+  cursor: pointer;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  background: #f2f2f2;
+}
+
+.iframe .data {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 20px 35px 0 110px;
+}
+
+.iframe .data .bx {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  font-size: 1.2em;
+  width: 34%;
+  padding: 5px 20px;
+}
+
+.iframe .data .data1 {
+  border-radius: 10px 0 0 10px;
+}
+
+.iframe .data .data2 {
+  border-left: 1px solid #666666;
+  border-right: 1px solid #666666;
+}
+
+.iframe .data .data3 {
+  border-radius: 0 10px 10px 0;
+}
+
+/* --- Graphics Section */
+.iframe .graphics-section {
+  width: 100%;
+  height: auto;
+}
+
+.iframe .graphics-section .graphics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  padding: 0 35px 0 110px;
+}
+
+.graphics-section .graphics-grid .gr1,
+.graphics-section .graphics-grid .gr2 {
+  width: 100%;
+  height: 400px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.graphics-section .graphic-button {
+  width: 100%;
+  padding: 10px 30px 10px 110px;
+}
+
+.graphics-section .graphic-button button {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+.iframe .reso-dev-section {
+  width: 100%;
+  height: auto;
+}
+
+.iframe .reso-dev-section .cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  padding: 0 35px 30px 110px;
+}
+
+.reso-dev-section .cards-grid .gr1,
+.reso-dev-section .cards-grid .gr2 {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px 40px;
+  font-size: 0.7em;
+}
+
+.cards-grid .cards-gr1 .cards-gr1__title {
+  width: 100%;
+  padding: 8px 0;
+}
+
+.cards-gr1 .cards-gr1__body .row div:last-child {
+  display: flex;
+}
+
+.cards-gr1 .cards-gr1__body .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #c3c3c3;
+  padding: 8px 0;
+}
+
+.cards-gr2 .cards-gr2-inputs button {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+.cards-gr2 .cards-gr2-inputs a {
+  text-align: center;
+}

@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300;1,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: rgb(255, 255, 255);
+    color: black;
+}
+
+/* Spinner Inicio Sesion */
+.glyphicon.fast-right-spinner {
+    -webkit-animation: glyphicon-spin-r 1s infinite linear;
+    animation: glyphicon-spin-r 1s infinite linear;
+  }
+  
+  @-webkit-keyframes glyphicon-spin-r {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+  
+  @keyframes glyphicon-spin-r {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+
+.contenedor{
+    margin-left: 350px;
+    margin-right: 350px;
+    margin-top: 55px;
+    display: grid;
+    /*grid-gap: 20px;*/
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, auto);
+}
+
+.contenedor{
+    border-radius: 20px;
+    background: #fff;
+}
+
+.contenedor .caja1{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, auto);
+}
+
+.contenedor .caja1 .arriba{
+    background: url(assets/images/Imagotipo_eDoc.svg) no-repeat top;
+    margin-top: 80px;
+    background-size: 50%;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.contenedor .caja1 .abajo{
+    background: url(assets/images/Isotipo_eDoc.svg) no-repeat top;
+    padding-bottom: 200px;
+    background-size: 115%;
+    border-radius: 20px 0px 0px 20px;
+    background-position-x: -105px;
+}
+
+.contenedor .caja2{
+    font-family: 'Poppins', sans-serif;
+    padding: 70px;
+    background: #24356b;
+    border-radius: 0px 20px 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, auto);
+}
+
+.caja2 h1{
+    margin: 0;
+    padding: 0 0 20px;
+    font-weight: bold;
+    display: block;
+    color:  #fff;
+    font-size: 26px;
+}
+
+.caja2 label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+    color: #fff;
+}
+
+.caja2 input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.caja2 input[type="text"],
+.caja2 input[type="password"]{
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.caja2 input::placeholder{
+    color: rgb(175, 175, 175);
+    padding-left: 10px;
+}
+
+.recaptcha{
+    padding-top: 10px;
+    width: 60%;
+    height: 60%;
+}
+
+.contenedor div button{
+    margin-top: 20px;
+}
+
+.contenedor button{
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background: rgb(59, 148, 250);
+    border-radius: 8px;
+    border: none;
+}
+
+.pie{
+    width: 200px;
+    padding: 30px 20px 0 15px;
+}

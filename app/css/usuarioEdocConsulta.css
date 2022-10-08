@@ -1,0 +1,603 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300;1,500;1,700&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: rgb(235, 235, 235);
+}
+
+.contenido{
+    padding: 20px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    grid-template-areas: "box1 box1"
+                         "box2 box3"
+                         "box5 box5"
+                         "box6 box6";
+}
+
+.box1{
+    background: #fff;
+    grid-area: box1;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(1, auto);
+    grid-template-areas: "box1-1 box1-2 box1-2 box1-2 box1-2 box1-3 box1-3 box1-3 box1-3";
+}
+
+.box1-1{
+    grid-area: box1-1;
+    padding: 35px 10px 10px 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.box1-2{
+    grid-area: box1-2;
+    padding: 15px;
+}
+
+.box1-3{
+    grid-area: box1-3;
+    padding: 27px 15px 15px 15px;
+}
+
+.box2{
+    grid-area: box2;
+    padding-top: 10px;
+}
+
+.box3{
+    grid-area: box3;
+    padding-top: 10px;
+}
+
+.box5{
+    grid-area: box5;
+    justify-content: end;
+    text-align: end;
+    align-items: flex-end;
+}
+
+.box6{
+    grid-area: box6;
+    gap: 10px;
+    background: #fff;
+}
+
+.modalOrden{
+    justify-content: center;
+    background: #fff; 
+    border-radius: 20px;
+}
+
+.paginacion{
+    background: none; 
+    border: none;
+}
+
+.botonDesCerAling{
+    justify-content: end; 
+    text-align: end; 
+    align-items: flex-end; 
+    padding: 0px 15px 0px 0px;
+}
+
+.botonDesCer{
+    width: 25%;
+    font-size: 11px; 
+    border-radius: 13px; 
+    background: #2797d2; 
+    border: none;
+}
+
+.botonDesCerGris{
+    width: 25%;
+    font-size: 11px; 
+    border-radius: 13px; 
+    border: none;
+}
+
+.lineaHorizontalCrear{
+    width: 15%;
+    height: 10px;
+    border-top: solid rgb(255, 255, 255) 3px;
+}
+
+.lineaHorizontalCrearVerde{
+    width: 15%;
+    height: 10px;
+    border-top: solid #afcb3a 3px;
+}
+
+.tablaVertical{
+    display: none;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, auto);
+    grid-template-areas: "espacio";
+}
+
+.espacio{
+    background: #fff;
+    border-radius: 20px;
+    height: 175px;
+    margin: 25px 25px 0 25px;
+}
+
+/* -------------------------detalles mas modales----------------------- */
+
+/*--------------------------- Modal historialdeconexion -----------------------------*/
+
+.navPaginacion1{
+    padding: 15px 15px 0px 0px; 
+    display: flex; 
+    justify-content: end; 
+    text-align: end; 
+    align-items: flex-end;
+}
+
+.navPaginacionP{
+    background: #fff; 
+    padding: 5px 8px 7px 8px; 
+    border-radius: 15px 0px 0px 15px; 
+    font-size: 13px;
+}
+
+.navPaginacionLiA{
+    border: none; 
+    font-size: 13px;
+}
+
+.historialdeconexionTabla{
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+/*<!--------------------------- Modal historialdeactividad ----------------------------->*/
+
+.historialdeactividadTabla{
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.haNavPaginacion2{
+    padding: 15px 15px 0px 0px; 
+    display: flex; 
+    justify-content: end; 
+    text-align: end; 
+    align-items: flex-end;
+}
+
+.haNavPaginacionP{
+    background: #fff; 
+    padding: 5px 8px 7px 8px; 
+    border-radius: 15px 0px 0px 15px; 
+    font-size: 13px;
+}
+
+.haNavPaginacionLiA{
+    border: none; 
+    font-size: 13px;
+}
+
+/*<!----------------- Administrar roles -------------------->*/
+
+.administrarRoles{
+    padding-left: 20px; 
+    padding-bottom: 20px;
+}
+
+.administrarbtn{
+    border: none; 
+    background: transparent; 
+    font-size: 15px;
+}
+
+.administrarspan{
+    color: #2797d2; 
+    padding-right: 5px;
+}
+
+.administrartabla{
+    margin-left: 20px; 
+    margin-right: 20px;
+}
+
+.administrarbodythbtn{
+    border: none; 
+    background: transparent; 
+    font-size: 17px;
+}
+
+.administrarbodythspan{
+    color: #2797d2; 
+    padding-right: 5px;
+}
+
+.administrarnav{
+    padding: 15px 15px 0px 0px; 
+    display: flex; 
+    justify-content: end; 
+    text-align: end; 
+    align-items: flex-end;
+}
+
+.administrarp{
+    background: #fff; 
+    padding: 5px 8px 8px 8px; 
+    border-radius: 15px 0px 0px 15px; 
+    font-size: 13px;
+}
+
+.administrarli{
+    border: none; 
+    font-size: 13px;
+}
+
+/*<!----------------- Crear Usuario -------------------->*/
+
+.crearusuarioh5{
+    padding-left: 10px;
+}
+
+.crearusuariodiv1{
+    padding-left: 50px; 
+    display: flex;
+}
+
+.crearusuariodiv1p{
+    background: #afcb3a; 
+    width: 19%; 
+    text-align: center; 
+    padding: 10px 0 10px 0; 
+    border-radius: 50%; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #fff;
+}
+
+.crearusuariodiv1p1{
+    background: #ffffff; 
+    width: 19%; 
+    text-align: center; 
+    padding: 10px 0 10px 0; 
+    border-radius: 50%; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #24356b;
+}
+
+.crearusuariodiv2p{
+    font-size: 13px; 
+    padding-left: 45px; 
+    color: #afcb3a;
+}
+
+.crearusuariodiv2p2{
+    font-size: 13px; 
+    padding-left: 55px; 
+    text-align: center;
+    color: #24356b;
+}
+
+.crearusuariodiv2p3{
+    font-size: 13px; 
+    padding-left: 72px;
+    color: #24356b;
+}
+
+.crearusuarioh6{
+    font-size: 13px; 
+    font-weight: bold; 
+    padding-left: 29px;
+    color: #24356b;
+}
+
+.crearusuarioh6p{
+    font-size: 13px; 
+    padding-left: 30px; 
+    margin: 0px;
+    color: #24356b;
+}
+
+.crearusuarioh6div{
+    padding-left: 25px; 
+    margin: 0;
+}
+
+.crearusuarioh6input{
+    width: 93%; 
+    border: none; 
+    border-radius: 10px; 
+    padding: 3px; 
+    margin-bottom: 10px;
+}
+
+.crearusuarioh6div2{
+    padding-right: 30px; 
+    padding-top: 10px;
+}
+
+/*<!----------------- Crear Usuario 2 -------------------->*/
+
+.crearusuario2div{
+    padding-left: 50px; 
+    display: flex;
+}
+
+.crearusuario2divp{
+    background: #afcb3a; 
+    width: 19%; 
+    text-align: center; 
+    padding: 10px 0 10px 0; 
+    border-radius: 50%; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #fff;
+}
+
+.crearusuario2divp2{
+    background: #ffffff; 
+    width: 19%; 
+    text-align: center; 
+    padding: 10px 0 10px 0; 
+    border-radius: 50%; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #24356b;
+}
+
+.crearusuario2div2p{
+    font-size: 13px; 
+    padding-left: 45px; 
+    color: #afcb3a;
+}
+
+.crearusuario2div2p2{
+    font-size: 13px; 
+    padding-left: 55px; 
+    text-align: center; 
+    color: #afcb3a;
+}
+
+.crearusuario2div2p3{
+    font-size: 13px; 
+    padding-left: 72px;
+    color: #24356b;
+}
+
+.crearusuario2h6{
+    font-size: 13px; 
+    font-weight: bold; 
+    padding-left: 29px;
+    color: #24356b;
+}
+
+.crearusuario2formp{
+    font-size: 13px; 
+    padding-left: 30px; 
+    margin: 0px;
+    color: #24356b;
+}
+
+.crearusuario2formdiv{
+    padding-left: 25px; 
+    padding-top: 5px; 
+    margin: 0; 
+    display: flex;
+}
+
+.crearusuario2formdiv1{
+    background: rgb(235, 235, 235); 
+    width: 70%;
+}
+
+.crearusuario2dropdown{
+    background: rgb(235, 235, 235); 
+    display: grid; 
+    grid-column: span 1;
+}
+
+.crearusuario2formdiv2{
+    padding-left: 10px; 
+    padding-top: 5px;
+}
+
+.crearusuario2fueradiv{
+    padding-top: 10px; 
+    display: none;
+}
+
+.crearusuario2fuerabtn{
+    border: none; 
+    background: transparent; 
+    font-size: 13px;
+}
+
+.crearusuario2fueraspan{
+    color: #2797d2; 
+    padding-right: 5px;
+}
+
+.crearusuario2fueradiv2{
+    font-size: 13px; 
+    padding-left: 30px; 
+    margin: 0px; 
+    width: 45%;
+    color: #24356b;
+}
+
+.crearusuario2fuerainput1{
+    border-radius: 10px; 
+    background: #fff; 
+    border: none; 
+    font-size: 13px; 
+    text-align: left; 
+    padding: 8px 5px 8px 15px;
+}
+
+.crearusuario2fueradiv3{
+    font-size: 13px; 
+    padding-left: 30px; 
+    margin: 0px;
+    width: 50%;
+    color: #24356b;
+}
+
+.crearusuario2fuerainput2{
+    border-radius: 10px; 
+    background: #fff; 
+    border: none; 
+    font-size: 13px; 
+    text-align: left; 
+    padding: 8px 5px 8px 15px;
+}
+
+.crearusuario2fueradiv4{
+    padding-top: 20px; 
+    padding-right: 30px;
+}
+
+/*<!----------------- Crear Usuario 3 -------------------->*/
+
+.crearusuario3div{
+    padding-left: 50px; 
+    display: flex;
+}
+
+.crearusuario3p{
+    background: #afcb3a; 
+    width: 19%; 
+    text-align: center; 
+    padding: 10px 0 10px 0; 
+    border-radius: 50%; 
+    font-size: 35px; 
+    font-weight: bold; 
+    color: #fff;
+}
+
+.crearusuario3div1p1{
+    font-size: 13px; 
+    padding-left: 45px; 
+    color: #afcb3a;
+}
+
+.crearusuario3div1p2{
+    font-size: 13px; 
+    padding-left: 55px; 
+    text-align: center; 
+    color: #afcb3a;
+}
+
+.crearusuario3div1p3{
+    font-size: 13px; 
+    padding-left: 72px; 
+    color: #afcb3a
+}
+
+.crearusuario3h6{
+    font-size: 13px; 
+    font-weight: bold; 
+    padding-left: 29px; 
+    padding-bottom: 10px;
+    color: #24356b;
+}
+
+.crearusuario3div2{
+    display: flex; 
+    padding-left: 30px; 
+    margin: 0;
+}
+
+.crearusuario3h62{
+    font-size: 13px; 
+    font-weight: bold; 
+    margin: 0; 
+    padding-top: 0; 
+    padding-bottom: 5px;
+    color: #24356b;
+}
+
+.crearusuario3p2{
+    font-size: 13px; 
+    margin: 0; 
+    padding-top: 0; 
+    padding-left: 30px;
+}
+
+.crearusuario3div3{
+    padding-top: 20px; 
+    padding-right: 30px;
+}
+
+/*<!---------------contenido--------------------->*/
+
+.contenidobox2{
+    width: 100%; 
+    padding: 10px; 
+    border-radius: 10px; 
+    background: #2797d2; 
+    border: none;
+}
+
+.contenidobox3{
+    width: 100%; 
+    padding: 10px; 
+    border-radius: 10px; 
+    background: #2797d2; 
+    border: none;
+}
+
+.contenidobox5{
+    background: transparent; 
+    color: rgb(126, 126, 126);
+    border: none; 
+    padding-top: 10px;
+}
+
+/*<!--------------------------------Tabla----------------------------------------->*/
+
+.tablabodyth{
+    border-radius: 20px 0px 0px 20px;
+}
+
+.tablabodythdiv{
+    justify-content: center; 
+    text-align: center; 
+    align-items: center;
+}
+
+.tablabodythdivbtn1{
+    border: none; 
+    color: #2797d2; 
+    font-size: 25px; 
+    background: transparent;
+}
+
+.tablabodythdivbtn1span1{
+    padding: 0px 2px 0px 0px;
+}
+
+.tablabodythdivbtn1span2{
+    padding: 0px 5px 0px 5px; 
+    background: transparent;
+}
+
+.tablabodythdivbtngroup{
+    padding: 0px; 
+    margin: 0px;
+}
+
+.tablabodythdivdropdown{
+    border: none; 
+    background: transparent;
+}
+

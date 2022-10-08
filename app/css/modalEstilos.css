@@ -1,0 +1,236 @@
+.fondoTransparente{
+    background: transparent;
+}
+
+.espacioCabezal{
+    padding: 220px 25px 0px 25px;
+}
+
+.centrarContenido{
+    text-align: center; 
+    justify-content: center; 
+    align-items: center; 
+    border-radius: 20px; 
+    background: rgb(235, 235, 235); 
+    padding: 0px; margin: 0px;
+}
+
+.sinBorde{
+    border-bottom: none;
+}
+
+.estiloTitulo{
+    color: #24356b; 
+    font-weight: bold; 
+    padding-top: 10px; 
+    font-size: 13px;
+}
+
+.estiloCuerpoModal{
+    background: rgb(235, 235, 235); 
+    border-radius: 0px 0px 20px 20px; 
+    width: 100%;
+}
+
+.estiloInput{
+    border-radius: 10px; 
+    background: #fff; 
+    color: rgba(179, 179, 179, 0.815); 
+    border: none; 
+    font-size: 13px; 
+    width: 100%;
+    text-align: left; 
+    padding: 8px 5px 8px 15px;
+}
+
+.estiloBoton{
+    padding: 15px;
+}
+
+.estiloEspacioBoton{
+    grid-column: span 1; 
+    border-radius: 10px; 
+    width: 25%;
+    background: #2797d2;
+    border: none;
+}
+
+.estiloBoton2{
+    grid-column: span 1; 
+    grid-row: span 2;
+}
+
+.estiloEspacioBoton2{
+    grid-column: span 1; 
+    border-radius: 10px; 
+    width: 100%;
+    background: #2797d2;
+    border: none;
+}
+
+.contenidoEventos{
+    border-radius: 20px; 
+    background: rgb(235, 235, 235);
+}
+
+.tituloEventos{
+    color: #24356b; 
+    font-weight: 800;
+}
+
+.cuerpoEventos{
+    background: rgb(235, 235, 235); 
+    border-radius: 0px 0px 20px 20px;
+}
+
+.espacio1Eventos{
+    padding: 5px 20px 5px 20px;
+}
+
+.espacio1TablaEventos{
+    margin: 0px; 
+    padding: 0px;
+}
+
+.cuerpoTabla{
+    font-size: 13px; 
+    font-weight: bold; 
+    color: rgb(134, 134, 134);
+}
+
+.espacio2-4Eventosp1{
+    padding: 25px 10px 0 10px; 
+    margin: 0px; 
+    line-height: 0%; 
+    font-size: 13px; 
+    color: #24356b; 
+    font-weight: bold;
+}
+
+.espacio2-4Eventosp2{
+    padding: 0px 10px 15px 10px; 
+    margin: 0px; 
+    line-height: 0%; 
+    font-size: 13px; 
+    color: #24356b; 
+    font-weight: bold;
+}
+
+.espacio2td1{
+    color: #24356b;
+}
+
+.espacio2td2{
+    display: flex; 
+    justify-content: end; 
+    color: #24356b;
+}
+
+.espacio3Eventos{
+    padding: 5px 20px 5px 20px;
+}
+
+.espacio3Titulo{
+    padding: 15px 10px 20px 10px; 
+    margin: 0px; 
+    line-height: 0%; 
+    font-size: 13px; 
+    color: #24356b; 
+    font-weight: bold;
+}
+
+.espacio3Tabla{
+    margin: 0px; 
+    padding: 0px;
+}
+
+.espacio3Cuerpo{
+    font-size: 13px; 
+    font-weight: bold; 
+    color: rgb(134, 134, 134);
+}
+
+.espacio3td1{
+    color: #24356b; 
+    border-radius: 10px 0px 0 10px;
+}
+
+.espacio3td1-1{
+    color: #24356b;    
+}
+
+.espacio3td2{
+    justify-content: end; 
+    text-align: end; 
+    color: #24356b; 
+    border-radius: 0px 10px 10px 0px;
+}
+
+.espacio5thead{
+    font-size: 13px; 
+    font-weight: normal; 
+    text-align: center; 
+    align-items: center; 
+    justify-content: center; 
+    color: #24356b; 
+    font-weight: bold;
+}
+
+.tablarow1{
+    border-radius: 20px 0px 0px 20px;
+}
+
+.tabladiv{
+    justify-content: center; 
+    text-align: center; 
+    align-items: center; 
+    color: #24356b; 
+    font-weight: normal;
+}
+
+.tablatd{
+    color: #24356b; 
+    justify-content: center; 
+    text-align: center; 
+    align-items: center;
+}
+
+.bordes1{
+    border-radius: 0px 20px 20px 0px;
+}
+
+.bordes2{
+    border-radius: 20px 0px 0px 20px; 
+    color: #24356b; 
+    justify-content: center; 
+    text-align: center; 
+    align-items: center; 
+    font-weight: normal;
+}
+
+.espacio6btn1{
+    border-radius: 10px; 
+    font-size: 13px; 
+    padding: 5px; 
+    margin: 0 10px 0 10px;
+    background: #2797d2;
+    border: none;
+}
+
+.espacio6btn2{
+    border-radius: 10px; 
+    font-size: 13px; 
+    padding: 5px;
+    background: #2797d2;
+    border: none;
+}
+
+.espacio1-1td1{
+    color: #24356b;
+}
+
+.espacio1-1td2{
+    display: flex; 
+    justify-content: end; 
+    color: #24356b;
+}

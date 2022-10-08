@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300;1,500;1,700&display=swap');
+
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: rgb(235, 235, 235);
+}
+
+.contenedor{
+    padding: 10px 30px 30px 30px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: "slot1 slot1"
+                         "slot2 slot2"
+                         "slot4 slot4";
+}
+
+.contenedor .slot1{
+    grid-area: slot1;
+}
+
+.contenedor .slot2{
+    grid-area: slot2;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.contenedor .slot3{
+    grid-area: slot3;
+    background: #fff;
+    border-radius: 10px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, auto);
+}
+
+.contenedor .slot4{
+    grid-area: slot4;
+}
+
+.lineaHorizontal2{
+    width: 50%;
+    height: 0.1px;
+    border-top: solid rgb(226, 226, 226) 1.2px;
+}
+
+.focusNone:focus{
+    outline: none;
+    outline-offset: 0;
+}
+
+.subir{
+    padding: 5px 10px;
+    background: rgb(233, 233, 233) ;
+    color:rgb(161, 161, 161);
+    border:0px solid #fff;
+    width: 100%;
+    height: 90px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    
+}
+ 
+.subir:hover{
+    color:#fff;
+    background: #cacaca;
+}
+
+.slot3-3 ::placeholder,
+.slot3-4 ::placeholder{
+    color: rgb(173, 173, 173);
+}

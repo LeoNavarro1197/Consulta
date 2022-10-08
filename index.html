@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="app/css/login.css" />
+
+    <!--cookies-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script src="./cargaInicial.js" type="module"></script>
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://www.google.com/recaptcha/api.js?hl=es&onload=onloadCallback&render=explicit"
+      async
+      defer
+    ></script>
+
+    <script src="https://www.google.com/recaptcha/api.js?hl=es&onload=onloadCallback&render=explicit" async defer></script>
+    <title>login</title>
+  </head>
+  <body>
+
+    <div id="spinnerPdf" style="display: none">
+      <div class="spinner-border text-primary" role="status" style="margin-top: 300px; margin-left: 750px;"></div>
+    </div>
+    <div id="contenedorIndex" class="shadow contenedor">
+      <div class="caja1">
+        <div
+          class="arriba"
+          style="
+            background: url(assets/images/Imagotipo_eDoc.svg) no-repeat top;
+            margin-top: 80px;
+            background-size: 50%;
+            border-radius: 20px 0px 0px 20px;
+          "
+        ></div>
+        <div
+          class="abajo"
+          style="
+            background: url(assets/images/Isotipo_eDoc.svg) no-repeat top;
+            padding-bottom: 200px;
+            background-size: 115%;
+            border-radius: 20px 0px 0px 20px;
+            background-position-x: -105px;
+          "
+        ></div>
+      </div>
+      <div class="caja2">
+        <form method="post" id="formData">
+          <div>
+            <h1>Portal Consulta</h1>
+          </div>
+
+          <!--usuario-->
+          <div>
+            <label for="usuario">Usuario</label>
+            <input id="email" type="text" placeholder="Ingrese su usuario" />
+          </div>
+
+          <!--contraseña-->
+          <div>
+            <label for="contraseña">Contraseña</label>
+            <input
+              id="pass"
+              type="password"
+              placeholder="Ingrese su contraseña"
+            />
+          </div>
+
+          <!--id compañia-->
+          <div>
+            <label for="idcompania">RUC Compañía</label>
+            <input
+              id="idcompania"
+              type="text"
+              placeholder="Ingrese el RUC de su compañía"
+            />
+          </div>
+
+          <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+
+          <!--captcha-->
+          <div>
+            <!-- <img src="assets/images/recaptcha.png" class="recaptcha" /> -->
+            <script type="text/javascript">
+              var expiraCallback = function () {
+                grecaptcha.reset(widgetDivReCaptchaGoogle);
+              };
+              var widgetDivReCaptchaGoogle;
+              var onloadCallback = function () {
+                widgetDivReCaptchaGoogle = grecaptcha.render(
+                  "DivReCaptchaGoogle",
+                  {
+                    // sitekey: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI",
+                    sitekey: localStorage.getItem('siteKey'),
+                    theme: "light",
+                    "expired-callback": expiraCallback,
+                  }
+                );
+              };
+            </script>
+            <div id="DivReCaptchaGoogle" class="g-recaptcha"></div>
+          </div>
+
+          <!--iniciar sesion-->
+          <div>
+            <button
+              type="button"
+              id="btnLogin"
+              class="btn btn-primary"
+              style="background-color: #2797d2"
+              >
+              Iniciar Sesión
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div
+      id="footerGuru"
+      style="
+        display: flex;
+        justify-content: end;
+        text-align: end;
+        align-items: flex-end;
+      "
+    >
+      <p style="padding: 0px; font-size: 13px; color: rgb(175, 175, 175)">
+        Un producto desarrollado por:
+      </p>
+      <p>
+        <img src="assets/images/Imagotipo_GuruSoft.svg" class="pie" />
+      </p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- Popper js, then Bootstrap js -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--ventanas emergentes-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app/js/loginToken.js" type="module"></script>
+    <script src="assets/js/main.js" type="module"></script>
+  </body>
+</html>
